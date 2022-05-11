@@ -1,16 +1,13 @@
 % rebase('layout.tpl', title=title, year=year)
-
-<h2>{{ title }}.</h2>
-<h3>{{ message }}</h3>
-
+<br/>
 <address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
+    FSPO<br />
+    GUAP<br />
 </address>
 
 <address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+    <strong>Verigo Andrew:</strong> <a href="mailto:Marketing@example.com">vad30001@gmail.com</a><br/>
+    <strong>Shtokman Andrew:</strong>   <a href="mailto:aaandrewww666@mail.ru">aaandrewww666@mail.ru</a><br />
+    <strong>Lisin Michael:</strong>   <a href="mailto:aaandrewww666@mail.ru">mikhail.lisin.312@mail.ru</a><br />
+    <strong>Stepanov Nikita:</strong> <a href="mailto:Marketing@example.com">nstepanov85@gmail.com</a>
 </address>
