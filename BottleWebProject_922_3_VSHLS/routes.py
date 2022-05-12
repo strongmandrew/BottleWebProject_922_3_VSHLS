@@ -4,6 +4,7 @@ Routes and views for the bottle application.
 
 from bottle import route, view
 from datetime import datetime
+from bottle import post, request
 
 @route('/')
 @route('/home')
@@ -53,3 +54,16 @@ def Hamilton_method():
         message='Your application description page.',
         year=datetime.now().year
     )
+
+@post('/home', method='post')
+def myFunction():
+    length = request.forms.get('Matrix_dimension').strip()
+    tableRow = ""; #Give a default value here
+    for i in range(length):
+        tableRow += "<tr>";
+        for j in range(length):
+            tableRow += "<td>";
+            tableRow += "This is your table";
+            tableRow += "</td>";
+        tableRow += "</tr>";
+    return tableRow;
