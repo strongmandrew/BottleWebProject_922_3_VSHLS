@@ -10,3 +10,4 @@
   </h4>
   <input class="text-field__input" type="int" name="Matrix_dimension" id="Matrix_dimension1" autofocus min = "2" max = "10" maxlength = "2"/>
 </div>
+<button class="button-style"> Enter </button>
