@@ -24,12 +24,12 @@ def contact():
         year=datetime.now().year
     )
 
-@route('/about')
-@view('about')
-def about():
+@route('/The_Euler_cycle')
+@view('The_Euler_cycle')
+def The_Euler_cycle():
     """Renders the about page."""
     return dict(
-        title='About',
+        title='The Euler cycle',
         message='Your application description page.',
         year=datetime.now().year
     )

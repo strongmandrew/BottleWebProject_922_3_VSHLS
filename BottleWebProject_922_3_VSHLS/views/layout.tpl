@@ -23,6 +23,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="/home">Home</a></li>
+                    <li><a href="/The_Euler_cycle">The Euler cycle</a></li>
                     <li><a href="/contact">Contact</a></li>
                 </ul>
             </div>
