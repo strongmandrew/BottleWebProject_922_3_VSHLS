@@ -46,7 +46,7 @@ def about():
 
 
 @route('/Hamilton_method')
-@view('/Hamilton_method')
+@view('Hamilton_method')
 def Hamilton_method(): 
     return dict(
         title='Hamilton cycle',

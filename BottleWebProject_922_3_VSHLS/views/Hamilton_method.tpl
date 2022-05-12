@@ -1,4 +1,4 @@
-% rebase ('layout.tpl', title='Hamilton method', year=year)
+% rebase('layout.tpl', title='Hamilton method', year=year)
 <head>
     
     <link rel="stylesheet" type="text/css" href="/static/content/Stylesheet1.css" />

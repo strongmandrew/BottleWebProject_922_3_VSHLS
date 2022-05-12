@@ -6,7 +6,7 @@
         <h2>Hamiltonian Cycle</h2>
         <p>The Hamiltonian path problem and the Hamiltonian cycle problem are problems of determining whether there is a Hamiltonian path or a Hamiltonian cycle in a given graph.
         </p>
-        <p><a class="btn btn-default" href="http://bottlepy.org/docs/dev/index.html">Solve &raquo;</a></p>
+        <p><a class="btn btn-default" href="/Hamilton_method">Solve &raquo;</a></p>
     </div>
 
     <div class="col-md-3">
