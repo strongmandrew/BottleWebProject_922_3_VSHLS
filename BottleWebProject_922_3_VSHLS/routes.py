@@ -39,7 +39,7 @@ def The_Euler_cycle():
 def about():
     """Renders the about page."""
     return dict(
-        title='Floyd',
-        message='Your Floyd page.',
+        title='Floyd method',
+        message='Floyd method is an algorithm for finding shortest paths in a weighted graph.',
         year=datetime.now().year
     )
