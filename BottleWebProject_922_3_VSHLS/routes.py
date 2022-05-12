@@ -33,3 +33,13 @@ def The_Euler_cycle():
         message='Your application description page.',
         year=datetime.now().year
     )
+
+@route('/Floyd')
+@view('Floyd')
+def about():
+    """Renders the about page."""
+    return dict(
+        title='Floyd',
+        message='Your Floyd page.',
+        year=datetime.now().year
+    )
