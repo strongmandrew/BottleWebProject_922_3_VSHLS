@@ -43,3 +43,13 @@ def about():
         message='Floyd method is an algorithm for finding shortest paths in a weighted graph.',
         year=datetime.now().year
     )
+
+
+@route('/Hamilton_method')
+@view('/Hamilton_method')
+def Hamilton_method(): 
+    return dict(
+        title='Hamilton cycle',
+        message='Your application description page.',
+        year=datetime.now().year
+    )

@@ -26,6 +26,7 @@
                     <li><a href="/The_Euler_cycle">The Euler cycle</a></li>
                     <li><a href="/contact">Contact</a></li>
                     <li><a href="/Floyd">Floyd</a></li>
+                    <li><a href="/Hamilton_method">Hamilton Method</a></li>
                 </ul>
             </div>
         </div>
