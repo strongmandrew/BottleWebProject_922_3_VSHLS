@@ -55,6 +55,16 @@ def Hamilton_method():
         year=datetime.now().year
     )
 
+@route('/Dijkstras_algorithm')
+@view('Dijkstras_algorithm')
+def Dijkstras_algorithm():
+    """Renders the about page."""
+    return dict(
+        title='Dijkstras_algorithm',
+        message='Your application description page.',
+        year=datetime.now().year
+    )
+
 @post('/home', method='post')
 def myFunction():
     length = request.forms.get('Matrix_dimension').strip()

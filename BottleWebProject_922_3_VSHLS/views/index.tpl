@@ -17,7 +17,7 @@
     <div class="col-md-3 ">
         <h2>Dijkstra's algorithm</h2>
         <p>A graph algorithm invented by the Dutch scientist Edsger Dijkstra in 1959. Finds the shortest paths from one of the vertices of the graph to all the others. The algorithm works only for graphs without edges of negative weight.</p>
-        <p><a class="btn btn-default" href="http://azure.microsoft.com">Solve &raquo;</a></p>
+        <p><a class="btn btn-default" href="/Dijkstras_algorithm">Solve &raquo;</a></p>
     </div>
      <div class="col-md-3">
         <h2>Floyd's algorithm</h2>
