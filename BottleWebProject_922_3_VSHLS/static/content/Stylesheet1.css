@@ -1,10 +1,6 @@
-/* установим отступ 1rem от нижнего края элемента */
-.text-field {
-    margin-bottom: 1rem;
-}
 /* стили для input */
 .text-field__input {
-    width: 800px;
+    width: 40px;
     height: 50px;
     font-family: inherit;
     font-size: 20px;
