@@ -12,7 +12,7 @@
     <div class="col-md-3">
         <h2>The Euler cycle</h2>
         <p>The Euler path (chain) passes through each edge of the graph exactly once. An Euler cycle is a closed path that passes through each edge of the graph exactly once. Finding the Euler cycle.</p>
-        <p><a class="btn btn-default" href="https://pypi.python.org/pypi">Solve &raquo;</a></p>
+        <p><a class="btn btn-default" href="/The_Euler_cycle">Solve &raquo;</a></p>
     </div>
     <div class="col-md-3 ">
         <h2>Dijkstra's algorithm</h2>
@@ -22,6 +22,6 @@
      <div class="col-md-3">
         <h2>Floyd's algorithm</h2>
         <p>An algorithm for finding shortest paths in a weighted graph with positive or negative edge weights. In one execution of the algorithm, the lengths of the shortest paths between all pairs of vertices will be found.</p>
-        <p><a class="btn btn-default" href="https://pypi.python.org/pypi">Solve &raquo;</a></p>
+        <p><a class="btn btn-default" href="/Floyd">Solve &raquo;</a></p>
     </div>
 </div>
