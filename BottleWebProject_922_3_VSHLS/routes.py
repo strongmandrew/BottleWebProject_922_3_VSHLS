@@ -2,9 +2,8 @@
 Routes and views for the bottle application.
 """
 
-from bottle import route, view
+from bottle import route, view, template, post, request
 from datetime import datetime
-from bottle import post, request
 
 @route('/')
 @route('/home')
@@ -67,13 +66,17 @@ def Dijkstras_algorithm():
 
 @post('/home', method='post')
 def myFunction():
-    length = request.forms.get('Matrix_dimension').strip()
-    tableRow = ""; #Give a default value here
-    for i in range(length):
-        tableRow += "<tr>";
-        for j in range(length):
-            tableRow += "<td>";
-            tableRow += "This is your table";
-            tableRow += "</td>";
-        tableRow += "</tr>";
-    return tableRow;
+    if(len(request.forms.get('Matrix_dimension').strip()) != 0):
+        length = int(request.forms.get('Matrix_dimension').strip())
+        tableRow = "<table>";
+        for i in range(length):
+            tableRow += "<tr>";
+            for j in range(length):
+                tableRow += "<td>";
+                tableRow += "<input type=\"int\" max = \"1\" maxlength = \"1\"/>";
+                tableRow += "</td>";
+            tableRow += "</tr>";
+        tableRow +="</table>"
+    else:
+        tableRow = "Enter value"
+    return template("The_Euler_cycle");
