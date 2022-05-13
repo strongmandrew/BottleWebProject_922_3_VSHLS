@@ -8,6 +8,10 @@ from pymongo import MongoClient
 from networkx import from_edgelist, is_eulerian, eulerian_circuit,circular_layout, nodes, DiGraph, draw
 from pylab import savefig, close
 
+app = Bottle()
+COOKIE_SECRET = 'super_secret'
+app.install(FlashPlugin(secret=[COOKIE_SECRET]))
+
 @route('/')
 @route('/home')
 @view('index')
