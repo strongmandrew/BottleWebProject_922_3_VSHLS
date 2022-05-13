@@ -2,9 +2,14 @@
 Routes and views for the bottle application.
 """
 
+from bottle_flash2 import FlashPlugin
 from bottle import route, view
 from datetime import datetime
-from bottle import post, request
+from bottle import post, request, Bottle
+
+app = Bottle()
+COOKIE_SECRET = 'super_secret'
+app.install(FlashPlugin(secret=[COOKIE_SECRET]))
 
 @route('/')
 @route('/home')
@@ -77,3 +82,10 @@ def myFunction():
             tableRow += "</td>";
         tableRow += "</tr>";
     return tableRow;
+
+@post('/check', method='post')
+def checkFun():
+    if request.forms.get('text') == "":
+        app.flash("Empty!!!")
+    else:
+        app.flash("OK)))")

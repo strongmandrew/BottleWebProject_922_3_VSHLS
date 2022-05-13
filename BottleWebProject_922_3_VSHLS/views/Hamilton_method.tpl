@@ -8,6 +8,9 @@
   <input class="text-field__input" type="int" name="Matrix_dimension" id="Matrix_dimension1" placeholder="Matrix dimension (whole number)" autofocus min = "2" max = "10" maxlength = "2"/>
 </div>
 
-<textarea id="multiliner" width=100px height=100px>
-
+<form action="/check" method="post">
+<textarea id="multiliner"name="text" width=100px height=100px>
 </textarea>
+
+<button class="button-style">ClickMe</button>
+</form>
