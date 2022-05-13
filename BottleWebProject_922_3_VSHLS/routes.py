@@ -2,8 +2,9 @@
 Routes and views for the bottle application.
 """
 
-from bottle import route, view, template, post, request
+from bottle import route, view, template, post, request, run, HTTPResponse
 from datetime import datetime
+from pymongo import MongoClient
 
 @route('/')
 @route('/home')
@@ -64,7 +65,8 @@ def Dijkstras_algorithm():
         year=datetime.now().year
     )
 
-@post('/home', method='post')
+
+@post('/Euler', method='post')
 def myFunction():
     if(len(request.forms.get('Matrix_dimension').strip()) != 0):
         length = int(request.forms.get('Matrix_dimension').strip())
