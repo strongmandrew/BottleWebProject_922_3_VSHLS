@@ -66,6 +66,9 @@
     <Content Include="static\scripts\_references.js" />
     <Content Include="views\about.tpl" />
     <Content Include="views\contact.tpl" />
+    <Content Include="views\Dijkstras_algorithm.tpl">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="views\Floyd.tpl" />
     <Content Include="views\Hamilton_method.tpl" />
     <Content Include="views\index.tpl" />
@@ -75,6 +78,15 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Interpreter Include="env1\">
+      <Id>env1</Id>
+      <Version>3.8</Version>
+      <Description>env1 (Python 3.8 (32-bit))</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>X86</Architecture>
+    </Interpreter>
     <Interpreter Include="env\">
       <Id>env</Id>
       <Version>3.9</Version>
