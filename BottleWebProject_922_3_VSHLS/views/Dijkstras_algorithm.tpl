@@ -10,21 +10,6 @@
   Enter the matrix with intengers
   </h5>
   </h4>
-  <table border="1px">
-<tr>
-	<td><input type=int max = 1 maxlength = 1/></td>
-	<td><input type=int max = 1 maxlength = 1/></td>
-	<td><input type=int max = 1 maxlength = 1/></td>
-</tr>
-<tr>
-	<td><input type=int max = 1 maxlength = 1/></td>
-	<td><input type=int max = 1 maxlength = 1/></td>
-	<td><input type=int max = 1 maxlength = 1/></td>
-</tr>
-<tr>
-	<td><input type=int max = 1 maxlength = 1/></td>
-	<td><input type=int max = 1 maxlength = 1/></td>
-	<td><input type=int max = 1 maxlength = 1/></td>
-</tr>
-</table>
+<textarea class="textarea_matrix" id = "mat" style = "width = 300px height=250px"></textarea>
+<br>
 <button class="button-style"> Enter </button>
