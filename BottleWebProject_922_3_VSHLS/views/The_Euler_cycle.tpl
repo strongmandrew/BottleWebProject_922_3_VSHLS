@@ -8,6 +8,11 @@
 <head>
     <br/>
     <h4>Matrix dimension (whole number)</h4>
-    <input class="text-field__input" type="int" name="Matrix_dimension" id="Matrix_dimension1" autofocus min = "2" max = "10" maxlength = "2"/>
+    <form action="/home" method="post">
+        <p><input class="text-field__input" type="int" name="Matrix_dimension" id="Matrix_dimension1" autofocus min = "2" max = "10" maxlength = "2"/></p>
+        <p><input type="submit" value="Send"></p>
+    </form>
+
+    
 </head>
 
