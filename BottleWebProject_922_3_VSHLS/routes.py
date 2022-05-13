@@ -2,10 +2,9 @@
 Routes and views for the bottle application.
 """
 
-from bottle_flash2 import FlashPlugin
-from bottle import route, view
+from bottle import route, view, template, post, request, run, HTTPResponse
 from datetime import datetime
-from bottle import post, request, Bottle
+from pymongo import MongoClient
 
 app = Bottle()
 COOKIE_SECRET = 'super_secret'
@@ -70,22 +69,20 @@ def Dijkstras_algorithm():
         year=datetime.now().year
     )
 
-@post('/home', method='post')
-def myFunction():
-    length = request.forms.get('Matrix_dimension').strip()
-    tableRow = ""; #Give a default value here
-    for i in range(length):
-        tableRow += "<tr>";
-        for j in range(length):
-            tableRow += "<td>";
-            tableRow += "This is your table";
-            tableRow += "</td>";
-        tableRow += "</tr>";
-    return tableRow;
 
-@post('/check', method='post')
-def checkFun():
-    if request.forms.get('text') == "":
-        app.flash("Empty!!!")
+@post('/Euler', method='post')
+def myFunction():
+    if(len(request.forms.get('Matrix_dimension').strip()) != 0):
+        length = int(request.forms.get('Matrix_dimension').strip())
+        tableRow = "<table>";
+        for i in range(length):
+            tableRow += "<tr>";
+            for j in range(length):
+                tableRow += "<td>";
+                tableRow += "<input type=\"int\" max = \"1\" maxlength = \"1\"/>";
+                tableRow += "</td>";
+            tableRow += "</tr>";
+        tableRow +="</table>"
     else:
-        app.flash("OK)))")
+        tableRow = "Enter value"
+    return template("The_Euler_cycle");

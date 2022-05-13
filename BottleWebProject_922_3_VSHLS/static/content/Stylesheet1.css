@@ -26,5 +26,11 @@
     font-size: 15px;
     vertical-align: text-top;
     border-radius: 8px;
-
+}
+.textarea_matrix {
+    width: 500px;
+    height: 250px;
+    font-family: inherit;
+    font-size: 50px;
+    border-radius: 6px;
 }
