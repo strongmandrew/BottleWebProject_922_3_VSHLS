@@ -8,8 +8,9 @@
 <head>
     <br/>
     <h4>Matrix dimension (whole number)</h4>
-    <form action="/home" method="post">
-        <p><input class="text-field__input" type="int" name="Matrix_dimension" id="Matrix_dimension1" autofocus min = "2" max = "10" maxlength = "2"/></p>
+    <form action="/Euler" method="post">
+        <p><textarea class="textboxtomatrix" type = text name="Matrix_dimension" width = "400px" height="300px" autofocus></textarea></p>
+        
         <p><input type="submit" value="Send"></p>
     </form>
 
