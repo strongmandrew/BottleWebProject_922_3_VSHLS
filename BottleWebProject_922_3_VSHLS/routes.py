@@ -67,24 +67,27 @@ def Dijkstras_algorithm():
 ##################################################################################################
 @post('/Euler', method='post')
 def funcEuler():
+###the method returns a string with Euler cycle if graph is Euler overwise the method returns a string that graph is not Euler###
     str1= request.forms.get('Matrix_dimension').strip()
     
     G = function_transformation(str1)
     answer = "";
     
     if(is_eulerian(G)):
-        answer+="Graph is eulerian: " + str(list(eulerian_circuit(G,source = 1)));
+        answer+="<p>Graph is Euler</p><p>Euler cycle: " + str(list(eulerian_circuit(G,source = 1)))+"</p>";
+        draw(G, pos=circular_layout(G), with_labels=True, node_size = 700, arrows = True)
+        print(answer)
+        savefig('./static/images/graph.png')
+        answer+="<p class=\"txt_algn_centr\"><img src=\"./static/images/graph.png\" alt=\"Graph\"></p>"
     else:
-        answer+="Graph is not eulerian"
-    draw(G, pos=circular_layout(G), with_labels=True, node_size = 700, arrows = True)
-    print(answer)
-    savefig('graph.png')
+        answer+="Graph is not Euler"
+    
     close()
     return answer
 ##################################################################################################
 def function_transformation(str1):
-    '''������� �������������� ����� ������������'''
-    '''���������� ������ DiGraph ���������� networkx'''
+    '''function to format user enter'''
+    '''DiGraph networkx'''
     str1= request.forms.get('Matrix_dimension').strip()
     mas = str1.replace(" ", "").split(";")
     if (mas[len(mas)-1] == ""):
@@ -125,7 +128,7 @@ def func():
             for j in range(cnt + 1):
                 mas1[i][j] = min(mas1[i][j], mas1[i][k] + mas1[k][j])
                 return str(mas1)
-
+##################################################################################################
 @post('/check', method='post')
 def checkGraph():
     str1= request.forms.get('text')
