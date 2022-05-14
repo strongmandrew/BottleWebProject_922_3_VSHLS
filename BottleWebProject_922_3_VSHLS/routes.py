@@ -69,7 +69,6 @@ def Dijkstras_algorithm():
         year=datetime.now().year
     )
 
-
 @post('/Euler', method='post')
 def myFunction():
     if(len(request.forms.get('Matrix_dimension').strip()) != 0):
