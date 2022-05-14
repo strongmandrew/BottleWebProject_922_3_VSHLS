@@ -4,7 +4,8 @@ Routes and views for the bottle application.
 from unittest import result
 from bottle import route, view, template, post, request, run, HTTPResponse, Bottle
 from datetime import datetime
-from networkx import from_edgelist, is_eulerian, eulerian_circuit,circular_layout, nodes, DiGraph, draw, hamiltonian_path
+from networkx import from_edgelist, is_eulerian, eulerian_circuit,circular_layout, nodes, DiGraph, draw
+from networkx.algorithms import tournament
 from pylab import savefig, close
 
 
@@ -153,6 +154,6 @@ def checkGraph():
             if(mas1[i][j] == 1):
                 G.add_edge(i+1,j+1)  
 
-    return str(hamiltonian_path(G))
+    return str(tournament.hamiltonian_path(G))
 
 
