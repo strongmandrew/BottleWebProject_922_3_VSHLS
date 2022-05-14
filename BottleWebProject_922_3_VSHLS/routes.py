@@ -103,3 +103,24 @@ def funcEuler():
     close()
     return answer
 
+@post('/floyd', method='post')
+def func():
+    str1= request.forms.get('TEXTFEALD')
+    cnt = 0
+    for l in range(len(str1)):
+        if str1[l] == ",":
+            cnt+=1
+    str1 = str1.replace(" ", "")
+    mas = str1.split(",")
+    mas1 = []
+    for i in mas:
+        mas1.append(list(i))
+    for i in range(len(mas1)):
+        for j in range(len(mas1[i])):
+            mas1[i][j] = int(mas[i][j])
+    for k in range(cnt + 1):
+        for i in range(cnt + 1):
+            for j in range(cnt + 1):
+                mas1[i][j] = min(mas1[i][j], mas1[i][k] + mas1[k][j])
+                return str(mas1)
+
