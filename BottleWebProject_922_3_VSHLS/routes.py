@@ -1,11 +1,10 @@
 """
 Routes and views for the bottle application.
 """
-import bottle
-from bottle import route, view, template, post, request, run, HTTPResponse
+from unittest import result
+from bottle import route, view, template, post, request, run, HTTPResponse, Bottle
 from datetime import datetime
-from pymongo import MongoClient
-from networkx import from_edgelist, is_eulerian, eulerian_circuit,circular_layout, nodes, DiGraph, draw
+from networkx import from_edgelist, is_eulerian, eulerian_circuit,circular_layout, nodes, DiGraph, draw, hamiltonian_path
 from pylab import savefig, close
 
 
@@ -123,4 +122,37 @@ def func():
             for j in range(cnt + 1):
                 mas1[i][j] = min(mas1[i][j], mas1[i][k] + mas1[k][j])
                 return str(mas1)
+
+@post('/check', method='post')
+def checkGraph():
+    str1= request.forms.get('text')
+    cnt = 0
+    for l in range(len(str1)):
+        if str1[l] == ";":
+            cnt+=1
+    str1 = str1.replace(" ", "")
+    mas = str1.split(";")
+    mas1 = []
+
+    for i in mas:
+        mas1.append(list(i))
+    for i in range(len(mas1)):
+        for j in range(len(mas1[i])):
+            mas1[i][j] = int(mas[i][j])
+    for k in range(cnt + 1):
+        for i in range(cnt + 1):
+            for j in range(cnt + 1):
+                mas1[i][j] = min(mas1[i][j], mas1[i][k] + mas1[k][j])
+
+    G = DiGraph()
+    for i in range(len(mas1)):
+        G.add_node(i+1)
+
+    for i in range(len(mas1)):
+        for j in range(len(mas1[i])):
+            if(mas1[i][j] == 1):
+                G.add_edge(i+1,j+1)  
+
+    return str(hamiltonian_path(G))
+
 
