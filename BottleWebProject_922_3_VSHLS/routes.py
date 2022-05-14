@@ -2,15 +2,9 @@
 Routes and views for the bottle application.
 """
 
-from bottle import route, view, template, post, request, run, HTTPResponse
+from itertools import count
+from bottle import route, view, template, post, request
 from datetime import datetime
-from pymongo import MongoClient
-from networkx import from_edgelist, is_eulerian, eulerian_circuit,circular_layout, nodes, DiGraph, draw
-from pylab import savefig, close
-
-app = Bottle()
-COOKIE_SECRET = 'super_secret'
-app.install(FlashPlugin(secret=[COOKIE_SECRET]))
 
 @route('/')
 @route('/home')
@@ -71,38 +65,41 @@ def Dijkstras_algorithm():
         year=datetime.now().year
     )
 
-@post('/Euler', method='post')
-def funcEuler():
-    str1= request.forms.get('Matrix_dimension').strip()
-    
-    mas = str1.replace(" ", "").split(";")
-    if (mas[len(mas)-1] == ""):
-        mas.pop()
+@post('/home', method='post')
+def myFunction():
+    if(len(request.forms.get('Matrix_dimension').strip()) != 0):
+        length = int(request.forms.get('Matrix_dimension').strip())
+        tableRow = "<table>";
+        for i in range(length):
+            tableRow += "<tr>";
+            for j in range(length):
+                tableRow += "<td>";
+                tableRow += "<input type=\"int\" max = \"1\" maxlength = \"1\"/>";
+                tableRow += "</td>";
+            tableRow += "</tr>";
+        tableRow +="</table>"
+    else:
+        tableRow = "Enter value"
+    return template("The_Euler_cycle");
+
+@post('/floyd', method='post')
+def func():
+    str1= request.forms.get('TEXTFEALD')
+    cnt = 0
+    for l in range(len(str1)):
+        if str1[l] == ",":
+            cnt+=1
+    str1 = str1.replace(" ", "")
+    mas = str1.split(",")
     mas1 = []
     for i in mas:
         mas1.append(list(i))
     for i in range(len(mas1)):
         for j in range(len(mas1[i])):
             mas1[i][j] = int(mas[i][j])
+    for k in range(cnt + 1):
+        for i in range(cnt + 1):
+            for j in range(cnt + 1):
+                mas1[i][j] = min(mas1[i][j], mas1[i][k] + mas1[k][j])
+                return str(mas1)
     
-    G = DiGraph()
-    for i in range(len(mas1)):
-        G.add_node(i+1)
-
-    for i in range(len(mas1)):
-        for j in range(len(mas1[i])):
-            if(mas1[i][j] == 1):
-                G.add_edge(i+1,j+1)  
-    print(G)
-    answer = "";
-    
-    if(is_eulerian(G)):
-        answer+="Graph is eulerian: " + str(list(eulerian_circuit(G,source = 1)));
-    else:
-        answer+="Graph is not eulerian"
-    draw(G, pos=circular_layout(G), with_labels=True, node_size = 700, arrows = True)
-    print(answer)
-    savefig('graph.png')
-    close()
-    return answer
-
