@@ -7,6 +7,7 @@ from datetime import datetime
 from networkx import from_edgelist, is_eulerian, eulerian_circuit,circular_layout, nodes, DiGraph, draw
 from networkx.algorithms import tournament
 from pylab import savefig, close
+import re
 
 @route('/')
 @route('/home')
@@ -131,33 +132,46 @@ def func():
 @post('/check', method='post')
 def checkGraph():
     str1= request.forms.get('text')
-    cnt = 0
-    for l in range(len(str1)):
-        if str1[l] == ";":
-            cnt+=1
-    str1 = str1.replace(" ", "")
-    mas = str1.split(";")
-    mas1 = []
+    if (len(str1.strip()) > 0):
+        if (isMatrix(str1)):
+            cnt = 0
+            for l in range(len(str1)):
+                if str1[l] == ";":
+                    cnt+=1
+            str1 = str1.replace(" ", "")
+            mas = str1.split(";")
+            mas1 = []
 
-    for i in mas:
-        mas1.append(list(i))
-    for i in range(len(mas1)):
-        for j in range(len(mas1[i])):
-            mas1[i][j] = int(mas[i][j])
-    for k in range(cnt + 1):
-        for i in range(cnt + 1):
-            for j in range(cnt + 1):
-                mas1[i][j] = min(mas1[i][j], mas1[i][k] + mas1[k][j])
+            for i in mas:
+                mas1.append(list(i))
+            for i in range(len(mas1)):
+                for j in range(len(mas1[i])):
+                    mas1[i][j] = int(mas[i][j])
+            for k in range(cnt + 1):
+                for i in range(cnt + 1):
+                    for j in range(cnt + 1):
+                        mas1[i][j] = min(mas1[i][j], mas1[i][k] + mas1[k][j])
 
-    G = DiGraph()
-    for i in range(len(mas1)):
-        G.add_node(i+1)
+            G = DiGraph()
+            for i in range(len(mas1)):
+                G.add_node(i+1)
 
-    for i in range(len(mas1)):
-        for j in range(len(mas1[i])):
-            if(mas1[i][j] == 1):
-                G.add_edge(i+1,j+1)  
+            for i in range(len(mas1)):
+                for j in range(len(mas1[i])):
+                    if(mas1[i][j] == 1):
+                        G.add_edge(i+1,j+1)  
 
-    return str(tournament.hamiltonian_path(G))
+            return str(tournament.hamiltonian_path(G))
+        else:
+            return "Fill in the blank with matrix"
+    else:
+        return "Doesn't match the pattern of matrix"
+
+
+def isMatrix(inputStr):
+    matrixPattern = re.compile(r'^[^A-Za-z2-9/\-><?).,<>|]+$')
+    if matrixPattern.match(inputStr.strip()):
+        return True
+    else: return False;
 
 
