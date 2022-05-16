@@ -3,9 +3,10 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }} - GraphOnline</title>
+    <title>SolveGraph</title>
     <link rel="stylesheet" type="text/css" href="/static/content/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="/static/content/site.css" />
+    <link rel="stylesheet" type="text/css" href="/static/content/Stylesheet1.css" />
     <script src="/static/scripts/modernizr-2.6.2.js"></script>
 </head>
 
@@ -18,15 +19,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="/" class="navbar-brand">SolveGraph</a>
+                <a href="/" class="navbar-brand"><p style="font-size:24pt; padding-top: 7px;">SolveGraph</p></a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="/The_Euler_cycle">The Euler cycle</a></li>                    
-                    <li><a href="/Floyd">Floyd</a></li>
-                    <li><a href="/Hamilton_method">Hamilton Method</a></li>
-                    <li><a href="/Dijkstras_algorithm">Dijkstras_algorithm</a></li>
-                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/The_Euler_cycle"><p style="padding-top: 10px;">The Euler cycle</p></a></li>                    
+                    <li><a href="/Floyd"><p style="padding-top: 10px;">Floyd</p></a></li>
+                    <li><a href="/Hamilton_method"><p style="padding-top: 10px;">Hamilton Method</p></a></li>
+                    <li><a href="/Dijkstras_algorithm"><p style="padding-top: 10px;">Dijkstras_algorithm</p></a></li>
+                    <li><a href="/contact"><p style="padding-top: 10px;">Contact</p></a></li>
                 </ul>
             </div>
         </div>

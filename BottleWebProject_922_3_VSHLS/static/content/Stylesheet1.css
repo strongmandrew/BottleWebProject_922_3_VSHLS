@@ -9,7 +9,15 @@
     color: #212529;
     background-color: #fff;
     background-clip: padding-box;
-    border: 1px solid #bdbdbd;;
+    border: 1px solid #bdbdbd;
+}
+h1 {
+    font-family: Verdana, Arial, Helvetica, sans-serif; /* Гарнитура текста */
+    font-size: 250%; /* Размер шрифта в процентах */
+}
+p {
+    font-family: Verdana;
+    font-size: 16pt; /* Размер шрифта в пунктах */
 }
 .button-style {
     width: 100px;
@@ -33,4 +41,13 @@
     font-family: inherit;
     font-size: 50px;
     border-radius: 6px;
+}
+.txt_algn_centr {
+    text-align: center; /* Выравнивание по центру */
+}
+
+.button-stl {
+    background-color: transparent;
+    border: 1px solid black;
+    border-radius: 4px;
 }
