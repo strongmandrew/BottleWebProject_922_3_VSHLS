@@ -160,5 +160,18 @@ def checkGraph():
                 G.add_edge(i+1,j+1)  
 
     return str(tournament.hamiltonian_path(G))
+##################################################################################################
+@post('/Dijkstra', method='post')
+def func():
+    str1 = request.forms.get('atext')
+    str1 = str1.replace(" ", "")
+    mas = str1.split(",")
+    mas1 = []
+    for i in mas:
+        mas1.append(list(i))
+    for i in range(len(mas1)):
+        for j in range(len(mas1[i])):
+            mas1[i][j] = int(mas[i][j])
+    print(mas1)
 
 

@@ -10,6 +10,7 @@
   Enter the matrix with intengers
   </h5>
   </h4>
-<textarea class="textarea_matrix" id = "mat" style = "width = 300px height=250px"></textarea>
+  <form action="/Dijkstra" method="post">
+<textarea class="textarea_matrix" id = "mat" name = "atext" style = "width = 300px height=250px"></textarea>
 <br>
 <button class="button-style"> Enter </button>
