@@ -9,6 +9,7 @@ from networkx.algorithms import tournament
 from pylab import savefig, close
 import re
 
+
 @route('/')
 @route('/home')
 @view('index')
@@ -160,19 +161,75 @@ def checkGraph():
             for i in range(len(mas1)):
                 for j in range(len(mas1[i])):
                     if(mas1[i][j] == 1):
-                        G.add_edge(i+1,j+1)  
+                        G.add_edge(i+1,j+1) 
+            
+            graph = Graph(G.edges, len(mas1))
 
-            return str(tournament.hamiltonian_path(G))
+            return findHamiltonianPaths(graph, len(mas1))
+
         else:
-            return "Fill in the blank with matrix"
+            return "Doesn't match the pattern of matrix"
     else:
-        return "Doesn't match the pattern of matrix"
+        return "Fill in the blank with matrix"
 
 
 def isMatrix(inputStr):
     matrixPattern = re.compile(r'^[^A-Za-z2-9/\-><?).,<>|]+$')
     if matrixPattern.match(inputStr.strip()):
         return True
-    else: return False;
+    else: return False
+
+class Graph:
+ 
+    # Constructor
+    def __init__(self, edges, n):
+ 
+        # A list of lists to represent an adjacency list
+        self.adjList = [[] for _ in range(n)]
+ 
+        # add edges to the undirected graph
+        for (src, dest) in edges:
+            self.adjList[src].append(dest)
+            self.adjList[dest].append(src)
+ 
+def hamiltonianPaths(graph, v, visited, path, n):
+ 
+    # if all the vertices are visited, then the Hamiltonian path exists
+    if len(path) == n:
+        # print the Hamiltonian path
+        
+        return path
+ 
+    # Check if every edge starting from vertex `v` leads to a solution or not
+    for w in graph.adjList[v]:
+ 
+        # process only unvisited vertices as the Hamiltonian
+        # path visit each vertex exactly once
+        if not visited[w]:
+            visited[w] = True
+            path.append(w)
+ 
+            # check if adding vertex `w` to the path leads to the solution or not
+            hamiltonianPaths(graph, w, visited, path, n)
+ 
+            # backtrack
+            visited[w] = False
+            path.pop()
+ 
+ 
+def findHamiltonianPaths(graph, n):
+ 
+    # start with every node
+    for start in range(n):
+ 
+        # add starting node to the path
+        path = [start]
+    
+        # mark the start node as visited
+        visited = [False] * n
+        visited[start] = True
+    
+        hamiltonianPaths(graph, start, visited, path, n)
+
 
 

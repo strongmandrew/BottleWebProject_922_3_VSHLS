@@ -65,3 +65,13 @@ p {
     -o-user-select: none;
     user-select: none;
 }
+
+.logo-stl{
+    border-radius: 20px;
+    background-color: white;
+}
+
+.icon-stl {
+    width: 20px;
+    height: 20px;
+}
