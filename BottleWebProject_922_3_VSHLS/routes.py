@@ -177,6 +177,10 @@ def isMatrix(inputStr):
 @post('/Dijkstra', method='post')
 def func():
     str1 = request.forms.get('atext')
+    cnt = 0
+    for a in range(len(str1)):
+        if str1[a] == ",":
+            cnt+=1
     str1 = str1.replace(" ", "")
     mas = str1.split(",")
     mas1 = []
@@ -185,6 +189,6 @@ def func():
     for i in range(len(mas1)):
         for j in range(len(mas1[i])):
             mas1[i][j] = int(mas[i][j])
-    print(mas1)
+
 
 
