@@ -81,7 +81,6 @@ def funcEuler():
         answer+="<p class=\"txt_algn_centr\"><img src=\"./static/images/graph.png\" alt=\"Graph\"></p>"
     else:
         answer+="Graph is not Euler"
-    
     close()
     return answer
 ##################################################################################################
