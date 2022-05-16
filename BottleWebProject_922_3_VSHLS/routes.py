@@ -6,10 +6,6 @@ from bottle import route, view, template, post, request, run, HTTPResponse
 from datetime import datetime
 from pymongo import MongoClient
 
-app = Bottle()
-COOKIE_SECRET = 'super_secret'
-app.install(FlashPlugin(secret=[COOKIE_SECRET]))
-
 @route('/')
 @route('/home')
 @view('index')
