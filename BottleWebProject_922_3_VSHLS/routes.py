@@ -174,5 +174,18 @@ def isMatrix(inputStr):
     if matrixPattern.match(inputStr.strip()):
         return True
     else: return False;
+##################################################################################################
+@post('/Dijkstra', method='post')
+def func():
+    str1 = request.forms.get('atext')
+    str1 = str1.replace(" ", "")
+    mas = str1.split(",")
+    mas1 = []
+    for i in mas:
+        mas1.append(list(i))
+    for i in range(len(mas1)):
+        for j in range(len(mas1[i])):
+            mas1[i][j] = int(mas[i][j])
+    print(mas1)
 
 
