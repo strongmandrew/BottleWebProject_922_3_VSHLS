@@ -2,13 +2,26 @@
 
 <head>
     <style>
-   td{
+    table { 
+    width: 50%; /* Ширина таблицы */
+    border: 1px solid black; /* Рамка вокруг таблицы */
+    border-collapse: collapse; /* Отображать только одинарные линии */
+   }
+   td, th { 
+    background: #ccc; /* Цвет фона ячеек */
+    padding: 3px; /* Поля вокруг содержимого ячеек */
+    border: 1px solid black; /* Параметры рамки */
+    ;
+   }
+   td { 
     font-family: Verdana;
     font-size:16pt;
-    align: center;
+    text-align: center;
+    background: #ccc; /* Цвет фона */
    }
-   </style>
-  <link rel="stylesheet" type="text/css" href="/static/content/Stylesheet1.css" />
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="/static/content/Stylesheet1.css" />
 </head>
 <body>
     <br/>
@@ -18,8 +31,8 @@
     <p>This service provides finding the Euler cycle if the graph is an Euler graph</p>
     <br/>
     <form action="/Euler" method="post">
-        <p>Enter matrix: <input class="textarea_Euler" type = "text" name="Matrix_dimension" required pattern="^[0-1;]+$" placeholder="111;111;111" autofocus></textarea>
-        <input class="button-stl" type="submit" value="Solve"></p>
+        <p>Enter matrix: <input class="btn btn-default" font-family: "Verdana" font-size="16pt" type = "text" name="Matrix_dimension" required pattern="^[0-1;]+$" placeholder="111;111;111" autofocus></textarea>
+        <input class="btn btn-default" type="submit" value="Solve"></p>
         <br/>
     </form>
     <div class="brd" align="center">
@@ -39,7 +52,7 @@
         <p class="txt_algn_centr"><img src="./static/images/example1.png" alt="Graph example"></p>
         <p>Example 2.</p>
         <p>You need to enter a matrix like this:</p>
-        <table border="1" cellpadding="12">
+        <table>
             <tr>
                 <td>0</td>
                 <td>1</td>
