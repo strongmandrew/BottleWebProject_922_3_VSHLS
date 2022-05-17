@@ -190,5 +190,13 @@ def func():
         for j in range(len(mas1[i])):
             mas1[i][j] = int(mas[i][j])
 
+    for b in range(cnt + 1):
+        for c in range(cnt + 1):
+            for d in range(cnt + 1):
+                for i in range(cnt + 1):
+                    for j in range(cnt + 1):
+                        mas1[i][j] = min(mas1[i][j], mas1[i][b] + mas1[b][j] + mas1[i][c] + mas1[c][j] + mas1[i][d] + mas1[d][j])
+                        return str(mas1)
+
 
 
