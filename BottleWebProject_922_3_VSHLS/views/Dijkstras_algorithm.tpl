@@ -1,6 +1,5 @@
 % rebase('layout.tpl', title='Dijkstras_algorithm', year=year)
 <head>
-    
     <link rel="stylesheet" type="text/css" href="/static/content/Stylesheet1.css" />
 </head>
 <br/>
@@ -10,6 +9,7 @@
   Enter the matrix with intengers
   </h5>
   </h4>
-<textarea class="textarea_matrix" id = "mat" style = "width = 300px height=250px"></textarea>
+  <form action="/Dijkstra" method="post">
+<textarea class="textarea_matrix" id = "mat" name = "atext" style = "width = 300px height=250px"></textarea>
 <br>
 <button class="button-style"> Enter </button>

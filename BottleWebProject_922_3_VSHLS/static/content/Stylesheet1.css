@@ -42,7 +42,7 @@ p {
     width: 500px;
     height: 250px;
     font-family: inherit;
-    font-size: 50px;
+    font-size: 20px;
     border-radius: 6px;
 }
 .txt_algn_centr {
@@ -70,4 +70,14 @@ p {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+.logo-stl{
+    border-radius: 20px;
+    background-color: white;
+}
+
+.icon-stl {
+    width: 20px;
+    height: 20px;
 }

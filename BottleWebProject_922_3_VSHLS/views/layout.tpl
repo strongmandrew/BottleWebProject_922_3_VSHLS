@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="/static/content/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="/static/content/site.css" />
     <link rel="stylesheet" type="text/css" href="/static/content/Stylesheet1.css" />
+    <link rel="icon" href="./static/images/solve_logo.PNG" class="icon-stl"/>
     <script src="/static/scripts/modernizr-2.6.2.js"></script>
 </head>
 
@@ -19,7 +20,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="/" class="navbar-brand"><p style="font-size:24pt; padding-top: 7px;">SolveGraph</p></a>
+                <a href="/"  class="navbar-brand"><img class="logo-stl" src="./static/images/solve_logo.PNG" width="40" height="40"></a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
