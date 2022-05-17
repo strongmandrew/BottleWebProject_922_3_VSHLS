@@ -7,6 +7,7 @@
     font-size:16pt;
     align: center;
    }
+   </style>
   <link rel="stylesheet" type="text/css" href="/static/content/Stylesheet1.css" />
 </head>
 <body>
@@ -17,9 +18,8 @@
     <p>This service provides finding the Euler cycle if the graph is an Euler graph</p>
     <br/>
     <form action="/Euler" method="post">
-        <p>Enter matrix: <input class="textarea_Euler" type = "text" id="Matrix_dimension" required pattern="^[0-1;]+$" placeholder="111;111;111" autofocus></textarea>
+        <p>Enter matrix: <input class="textarea_Euler" type = "text" name="Matrix_dimension" required pattern="^[0-1;]+$" placeholder="111;111;111" autofocus></textarea>
         <input class="button-stl" type="submit" value="Solve"></p>
-        <div id = "priceLevel"></div>
         <br/>
     </form>
     <div class="brd" align="center">
