@@ -143,10 +143,6 @@ def func():
     results = {a:dict(b) for a,b in fw.items()}
     close()
     return str(results), answer
-
-def new_func():
-    G = Graph()
-    return G
 ##################################################################################################
 @post('/check', method='post')
 def checkGraph():
@@ -162,14 +158,13 @@ def checkGraph():
             return "Doesn't match the pattern of matrix"
     else:
         return "Fill in the blank with matrix"
-
-
+##################################################################################################
 def isMatrix(inputStr):
     matrixPattern = re.compile(r'^[^A-Za-z2-9/\-><?).,<>|]+$')
     if matrixPattern.match(inputStr.strip()):
         return True
     else: return False
-
+##################################################################################################
 class GraphHelper:
  
     # Constructor
