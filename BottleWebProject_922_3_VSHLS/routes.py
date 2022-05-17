@@ -144,6 +144,44 @@ def func():
     close()
     return str(results), answer
 ##################################################################################################
+@post('/Dijkstra', method='post')
+def func():
+    str1= request.forms.get('text')
+    count = 0
+    cnt = 0
+    str1 = str1.replace(" ", "")
+    mas = str1.split(",")
+    mas1 = []
+    for i in mas:
+        mas1.append(list(i))
+    for i in range(len(mas1)):
+        for j in range(len(mas1[i])):
+            count + 1
+            cnt + 1
+            mas1[i][j] = (mas[i][j])
+            
+    edges = mas1       
+    G = Graph()
+    for i in range(1, cnt):
+        G.add_node(i)
+    G.add_edges_from(edges)
+
+    pos = planar_layout(G)
+    p1 = shortest_path(G, source=1, weight='weight')
+    savefig('./static/images/dijkstragraph.png')
+    answer="<p class=\"txt_algn_centr\"><img src=\"./static/images/dijkstragraph.png\" alt=\"Graph\"></p>"
+    p1to6 = shortest_path(G, source=1, target=6, weight='weight')
+    length = shortest_path_length(G, source=1, target=6, weight='weight')
+    fw = floyd_warshall(G, weight='weight')
+
+    print("All shortest paths from 1: " + str(p1))
+    print("Shortest path from 1 to 6: " + str(p1to6))
+    print("Length of the shortest path: " + str(length))
+
+def new_func():
+    G = Graph()
+    return G
+##################################################################################################
 @post('/check', method='post')
 def checkGraph():
     str1= request.forms.get('text')
@@ -219,14 +257,6 @@ def findHamiltonianPaths(graph, n):
         visited[start] = True
     
         hamiltonianPaths(graph, start, visited, path, n)
-
-    for b in range(cnt + 1):
-        for c in range(cnt + 1):
-            for d in range(cnt + 1):
-                for i in range(cnt + 1):
-                    for j in range(cnt + 1):
-                        mas1[i][j] = min(mas1[i][j], mas1[i][b] + mas1[b][j] + mas1[i][c] + mas1[c][j] + mas1[i][d] + mas1[d][j])
-                        return str(mas1)
 
 
 
