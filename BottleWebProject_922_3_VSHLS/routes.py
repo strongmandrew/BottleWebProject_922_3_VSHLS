@@ -143,6 +143,10 @@ def func():
     results = {a:dict(b) for a,b in fw.items()}
     close()
     return str(results), answer
+
+def new_func():
+    G = Graph()
+    return G
 ##################################################################################################
 @post('/check', method='post')
 def checkGraph():
