@@ -61,7 +61,7 @@ def Hamilton_method():
 def Dijkstras_algorithm():
     """Renders the about page."""
     return dict(
-        title='Dijkstras_algorithm',
+        title='Dijkstras algorithm',
         message='Your application description page.',
         year=datetime.now().year
     )
@@ -153,36 +153,10 @@ def checkGraph():
     str1= request.forms.get('text')
     if (len(str1.strip()) > 0):
         if (isMatrix(str1)):
-            cnt = 0
-            for l in range(len(str1)):
-                if str1[l] == ";":
-                    cnt+=1
-            str1 = str1.replace(" ", "")
-            mas = str1.split(";")
-            mas1 = []
 
-            for i in mas:
-                mas1.append(list(i))
-            for i in range(len(mas1)):
-                for j in range(len(mas1[i])):
-                    mas1[i][j] = int(mas[i][j])
-            for k in range(cnt + 1):
-                for i in range(cnt + 1):
-                    for j in range(cnt + 1):
-                        mas1[i][j] = min(mas1[i][j], mas1[i][k] + mas1[k][j])
-
-            G = DiGraph()
-            for i in range(len(mas1)):
-                G.add_node(i+1)
-
-            for i in range(len(mas1)):
-                for j in range(len(mas1[i])):
-                    if(mas1[i][j] == 1):
-                        G.add_edge(i+1,j+1) 
+            G = function_transformation(str1.strip()) 
             
-            graph = GraphHelper(G.edges, len(mas1))
-
-            return findHamiltonianPaths(graph, len(mas1))
+            return str(tournament.hamiltonian_path(G))
 
         else:
             return "Doesn't match the pattern of matrix"
@@ -214,8 +188,11 @@ def hamiltonianPaths(graph, v, visited, path, n):
     # if all the vertices are visited, then the Hamiltonian path exists
     if len(path) == n:
         # print the Hamiltonian path
-        
-        return path
+        res = "["
+        for s in path:
+            res += s + ", "
+        res += "]"
+        return res
  
     # Check if every edge starting from vertex `v` leads to a solution or not
     for w in graph.adjList[v]:
@@ -247,6 +224,14 @@ def findHamiltonianPaths(graph, n):
         visited[start] = True
     
         hamiltonianPaths(graph, start, visited, path, n)
+
+    for b in range(cnt + 1):
+        for c in range(cnt + 1):
+            for d in range(cnt + 1):
+                for i in range(cnt + 1):
+                    for j in range(cnt + 1):
+                        mas1[i][j] = min(mas1[i][j], mas1[i][b] + mas1[b][j] + mas1[i][c] + mas1[c][j] + mas1[i][d] + mas1[d][j])
+                        return str(mas1)
 
 
 

@@ -27,7 +27,7 @@
                     <li><a href="/The_Euler_cycle"><p style="padding-top: 10px;">The Euler cycle</p></a></li>                    
                     <li><a href="/Floyd"><p style="padding-top: 10px;">Floyd</p></a></li>
                     <li><a href="/Hamilton_method"><p style="padding-top: 10px;">Hamilton Method</p></a></li>
-                    <li><a href="/Dijkstras_algorithm"><p style="padding-top: 10px;">Dijkstras_algorithm</p></a></li>
+                    <li><a href="/Dijkstras_algorithm"><p style="padding-top: 10px;">Dijkstras algorithm</p></a></li>
                     <li><a href="/contact"><p style="padding-top: 10px;">Contact</p></a></li>
                 </ul>
             </div>
