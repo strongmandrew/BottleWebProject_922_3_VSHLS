@@ -3,7 +3,7 @@ Routes and views for the bottle application.
 """
 from bottle import route, view, template, post, request, run, HTTPResponse
 from datetime import datetime
-from networkx import from_edgelist, is_eulerian, eulerian_circuit,circular_layout, nodes, DiGraph, draw, Graph, planar_layout,draw_networkx_edge_labels,floyd_warshall
+from networkx import from_edgelist, is_eulerian, eulerian_circuit,circular_layout, nodes, DiGraph, Graph, draw, planar_layout,draw_networkx_edge_labels,floyd_warshall,spring_layout
 from networkx.algorithms import tournament
 from pylab import savefig, close
 import re
@@ -76,12 +76,13 @@ def funcEuler():
     answer = "<head><link rel=\"stylesheet\" type=\"text/css\" href=\"/static/content/Stylesheet1.css\" /></head><body><br/><div class=\"brd\" align=\"center\">";
     
     if(is_eulerian(G)):
-        answer+="<p class=\"txt_algn_centr\">Graph is Euler</p><p class=\"txt_algn_centr\">Euler cycle: " + str(list(eulerian_circuit(G,source = 1)))+"</p>";
-        draw(G, pos=circular_layout(G), with_labels=True, node_size = 700, arrows = True)
-        print(answer)
-        savefig('./static/images/graph.png')
+        s = str(list(eulerian_circuit(G,source = 1)))
+        result = s[1 : -1].replace("),",") ->")
+        answer+="<p class=\"txt_algn_centr\">Graph is Euler</p><p class=\"txt_algn_centr\">Euler cycle: " + result +"</p>";
+        draw(G,pos =spring_layout(G), with_labels = True, node_size = 700,,arrowsize = 20, node_color = 'r', font_family = 'Verdana', arrows = True)
+        savefig('./static/images/Euler/graph.png')
         close()
-        answer+="<p class=\"txt_algn_centr\"><img src=\"./static/images/graph.png\" alt=\"Graph\"></p>"
+        answer+="<p class=\"txt_algn_centr\"><img src=\"./static/images/Euler/graph.png\" alt=\"Graph\"></p>"
     else:
         answer+="<p class=\"txt_algn_centr\">Graph is not Euler</p>"
         answer +="</div></body>"
@@ -107,8 +108,7 @@ def function_transformation(str1):
     for i in range(len(mas1)):
         for j in range(len(mas1[i])):
             if(mas1[i][j] == 1):
-                G.add_edge(i+1,j+1)  
-    print(G)
+                G.add_edge(i+1,j+1)
     return G
 ##################################################################################################
 @post('/floyd', method='post')

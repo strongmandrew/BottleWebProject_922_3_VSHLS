@@ -75,10 +75,10 @@
         <p>The matrix is written line by line, the separator is the character ;</p>
         <p>For our matrix, the row will look like this:</p>
         <br/>
-        <p><img src="./static/images/example_enter2.png" alt="Another enter example"></p>
+        <p><img src="./static/images/Euler/example_enter2.png" alt="Another enter example"></p>
         <br/>
         <p>Graph, which the program will see:</p>
-        <p><img src="./static/images/example1.png" alt="Graph example"></p>
+        <p><img src="./static/images/Euler/example1.png" alt="Graph example"></p>
         <p>Example 2.</p>
         <p>You need to enter a matrix like this:</p>
         <table>
@@ -108,9 +108,9 @@
             </tr>
         </table>
         <br/>
-        <p>You can either specify all connections:<img src="./static/images/example_enter.png" alt="Enter example"></p>
-        <p>Or do not specify anything if after 1, which means the connection of vertices, the points are not connected. I.e:<img src="./static/images/example_enter1.png" alt="Another enter example"></p>
+        <p>You can either specify all connections:<img src="./static/images/Euler/example_enter.png" alt="Enter example"></p>
+        <p>Or do not specify anything if after 1, which means the connection of vertices, the points are not connected. I.e:<img src="./static/images/Euler/example_enter1.png" alt="Another enter example"></p>
         <p>Graph, which the program will see:</p>
-        <p><img src="./static/images/example2.png" alt="Graph example"></p>
+        <p><img src="./static/images/Euler/example2.png" alt="Graph example"></p>
 </div>
 </body>
