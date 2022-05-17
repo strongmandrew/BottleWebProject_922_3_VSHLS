@@ -61,7 +61,7 @@ def Hamilton_method():
 def Dijkstras_algorithm():
     """Renders the about page."""
     return dict(
-        title='Dijkstras_algorithm',
+        title='Dijkstras algorithm',
         message='Your application description page.',
         year=datetime.now().year
     )
