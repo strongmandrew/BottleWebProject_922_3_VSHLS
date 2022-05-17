@@ -28,7 +28,8 @@ p {
     font-family: inherit;
     font-size: 13px;
     border-radius: 5px;
-    margin-top:10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 .textboxtomatrix{
     width:1000px;
