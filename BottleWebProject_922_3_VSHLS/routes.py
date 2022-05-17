@@ -177,10 +177,6 @@ def func():
     print("All shortest paths from 1: " + str(p1))
     print("Shortest path from 1 to 6: " + str(p1to6))
     print("Length of the shortest path: " + str(length))
-
-def new_func():
-    G = Graph()
-    return G
 ##################################################################################################
 @post('/check', method='post')
 def checkGraph():
