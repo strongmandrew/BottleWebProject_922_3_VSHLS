@@ -1,4 +1,7 @@
 /* стили для input */
+* {
+    font-family: Verdana;
+}
 .text-field__input {
     width: 40px;
     height: 70px;
@@ -45,7 +48,11 @@ p {
 .txt_algn_centr {
     text-align: center; /* Выравнивание по центру */
 }
-
+.brd {
+    border: 5px black; /* Параметры границы */
+    padding: 10px; /* Поля вокруг текста */
+    border-style: inset; /*solid;*/
+}
 .button-stl {
     background-color: transparent;
     display: inline-block;
@@ -62,6 +69,5 @@ p {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    -o-user-select: none;
     user-select: none;
 }

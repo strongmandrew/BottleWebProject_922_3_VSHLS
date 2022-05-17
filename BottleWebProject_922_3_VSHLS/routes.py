@@ -1,13 +1,13 @@
 """
 Routes and views for the bottle application.
 """
-
 from bottle import route, view, template, post, request, run, HTTPResponse
 from datetime import datetime
 from networkx import from_edgelist, is_eulerian, eulerian_circuit,circular_layout, nodes, DiGraph, draw
 from networkx.algorithms import tournament
 from pylab import savefig, close
 import re
+
 
 @route('/')
 @route('/home')
@@ -66,29 +66,32 @@ def Dijkstras_algorithm():
         year=datetime.now().year
     )
 ##################################################################################################
-@post('/Euler', method='post')
+@post('/Euler')
 def funcEuler():
 ###the method returns a string with Euler cycle if graph is Euler overwise the method returns a string that graph is not Euler###
     str1= request.forms.get('Matrix_dimension').strip()
     
+    #if (isMatrix(str1)):
     G = function_transformation(str1)
-    answer = "";
+    answer = "<head><link rel=\"stylesheet\" type=\"text/css\" href=\"/static/content/Stylesheet1.css\" /></head><body><br/><div class=\"brd\" align=\"center\">";
     
     if(is_eulerian(G)):
-        answer+="<p>Graph is Euler</p><p>Euler cycle: " + str(list(eulerian_circuit(G,source = 1)))+"</p>";
+        answer+="<p class=\"txt_algn_centr\">Graph is Euler</p><p class=\"txt_algn_centr\">Euler cycle: " + str(list(eulerian_circuit(G,source = 1)))+"</p>";
         draw(G, pos=circular_layout(G), with_labels=True, node_size = 700, arrows = True)
         print(answer)
         savefig('./static/images/graph.png')
+        close()
         answer+="<p class=\"txt_algn_centr\"><img src=\"./static/images/graph.png\" alt=\"Graph\"></p>"
     else:
-        answer+="Graph is not Euler"
-    close()
+        answer+="<p class=\"txt_algn_centr\">Graph is not Euler</p>"
+        answer +="</div></body>"
     return answer
+    #else:
+        #return "Doesn't match the pattern of matrix"
 ##################################################################################################
 def function_transformation(str1):
     '''function to format user enter'''
     '''DiGraph networkx'''
-    str1= request.forms.get('Matrix_dimension').strip()
     mas = str1.replace(" ", "").split(";")
     if (mas[len(mas)-1] == ""):
         mas.pop()
@@ -173,5 +176,3 @@ def isMatrix(inputStr):
     if matrixPattern.match(inputStr.strip()):
         return True
     else: return False;
-
-
