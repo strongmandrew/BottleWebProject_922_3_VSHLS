@@ -176,9 +176,9 @@ def checkGraph():
                     if(mas1[i][j] == 1):
                         G.add_edge(i+1,j+1) 
             
-            graph = GraphHelper(G.edges, len(mas1))
+            #graph = GraphHelper(G.edges, len(mas1[0]))
 
-            return findHamiltonianPaths(graph, len(mas1))
+            return str(G.edges)
 
         else:
             return "Doesn't match the pattern of matrix"
@@ -210,8 +210,11 @@ def hamiltonianPaths(graph, v, visited, path, n):
     # if all the vertices are visited, then the Hamiltonian path exists
     if len(path) == n:
         # print the Hamiltonian path
-        
-        return path
+        res = "["
+        for s in path:
+            res += s + ", "
+        res += "]"
+        return res
  
     # Check if every edge starting from vertex `v` leads to a solution or not
     for w in graph.adjList[v]:
