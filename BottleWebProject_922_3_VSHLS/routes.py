@@ -4,7 +4,7 @@ Routes and views for the bottle application.
 
 from bottle import route, view, template, post, request, run, HTTPResponse
 from datetime import datetime
-from networkx import from_edgelist, is_eulerian, eulerian_circuit,circular_layout, nodes, DiGraph, draw
+from networkx import from_edgelist, is_eulerian, eulerian_circuit,circular_layout, nodes, DiGraph, draw, Graph, planar_layout,draw_networkx_edge_labels,floyd_warshall
 from networkx.algorithms import tournament
 from pylab import savefig, close
 import re
@@ -83,14 +83,12 @@ def funcEuler():
         answer+="<p class=\"txt_algn_centr\"><img src=\"./static/images/graph.png\" alt=\"Graph\"></p>"
     else:
         answer+="Graph is not Euler"
-    
     close()
     return answer
 ##################################################################################################
 def function_transformation(str1):
     '''function to format user enter'''
     '''DiGraph networkx'''
-    str1= request.forms.get('Matrix_dimension').strip()
     mas = str1.replace(" ", "").split(";")
     if (mas[len(mas)-1] == ""):
         mas.pop()
@@ -114,9 +112,7 @@ def function_transformation(str1):
 def func():
     str1= request.forms.get('TEXTFEALD')
     cnt = 0
-    for l in range(len(str1)):
-        if str1[l] == ",":
-            cnt+=1
+    cont = 0
     str1 = str1.replace(" ", "")
     mas = str1.split(",")
     mas1 = []
@@ -124,12 +120,26 @@ def func():
         mas1.append(list(i))
     for i in range(len(mas1)):
         for j in range(len(mas1[i])):
-            mas1[i][j] = int(mas[i][j])
-    for k in range(cnt + 1):
-        for i in range(cnt + 1):
-            for j in range(cnt + 1):
-                mas1[i][j] = min(mas1[i][j], mas1[i][k] + mas1[k][j])
-                return str(mas1)
+            cnt + 0.5
+            cont +1
+            mas1[i][j] = (mas[i][j])
+
+    edges = mas1       
+    G = Graph()
+    for i in range(1,cnt):
+        G.add_node(i)
+    G.add_edges_from(edges)
+
+    pos = planar_layout(G)
+    draw(G, pos = circular_layout(G), with_labels = True)
+    savefig('./static/images/floydgraph.png')
+    answer="<p class=\"txt_algn_centr\"><img src=\"./static/images/floydgraph.png\" alt=\"Graph\"></p>"
+    draw_networkx_edge_labels(G, pos)
+    fw = floyd_warshall(G, weight='weight')
+
+    results = {a:dict(b) for a,b in fw.items()}
+    close()
+    return str(results), answer
 ##################################################################################################
 @post('/check', method='post')
 def checkGraph():
