@@ -173,7 +173,7 @@ def checkGraph():
                     if(mas1[i][j] == 1):
                         G.add_edge(i+1,j+1) 
             
-            graph = Graph(G.edges, len(mas1))
+            graph = GraphHelper(G.edges, len(mas1))
 
             return findHamiltonianPaths(graph, len(mas1))
 
@@ -189,7 +189,7 @@ def isMatrix(inputStr):
         return True
     else: return False
 
-class Graph:
+class GraphHelper:
  
     # Constructor
     def __init__(self, edges, n):
