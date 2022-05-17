@@ -50,6 +50,7 @@
     <Content Include="static\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="static\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="static\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="static\images\calculate.png" />
     <Content Include="static\images\example1.png" />
     <Content Include="static\images\graph.png" />
     <Content Include="static\images\matrix.png" />
