@@ -1,6 +1,7 @@
 """
 Routes and views for the bottle application.
 """
+import pprint
 from bottle import route, view, template, post, request, run, HTTPResponse, Bottle
 from datetime import datetime
 from networkx import from_edgelist, is_eulerian, eulerian_circuit,circular_layout, nodes, DiGraph, Graph, draw, planar_layout,draw_networkx_edge_labels,floyd_warshall,spring_layout
@@ -111,6 +112,7 @@ def function_transformation(str1):
                 G.add_edge(i+1,j+1)
     return G
 ##################################################################################################
+back = "<!DOCTYPE html><html><head><meta charset=\"utf-8\" /><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title>SolveGraph</title><link rel=\"stylesheet\" type=\"text/css\" href=\"/static/content/bootstrap.min.css\" /><link rel=\"stylesheet\" type=\"text/css\" href=\"/static/content/site.css\" /><link rel=\"stylesheet\" type=\"text/css\" href=\"/static/content/Stylesheet1.css\" /><link rel=\"icon\" href=\"./static/images/solve_logo.PNG\" class=\"icon-stl\"/><script src=\"/static/scripts/modernizr-2.6.2.js\"></script></head><body><div class=\"navbar navbar-inverse navbar-fixed-top\"><div class=\"container\"><div class=\"navbar-header\"><button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar-collapse\"><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span></button><a href=\"/\"  class=\"navbar-brand\"><img class=\"logo-stl\" src=\"./static/images/solve_logo.PNG\" width=\"40\" height=\"40\"></a></div><div class=\"navbar-collapse collapse\"><ul class=\"nav navbar-nav\"><li><a href=\"/The_Euler_cycle\"><p style=\"padding-top: 10px;\">The Euler cycle</p></a></li>                    <li><a href=\"/Floyd\"><p style=\"padding-top: 10px;\">Floyd</p></a></li><li><a href=\"/Hamilton_method\"><p style=\"padding-top: 10px;\">Hamilton Method</p></a></li><li><a href=\"/Dijkstras_algorithm\"><p style=\"padding-top: 10px;\">Dijkstras algorithm</p></a></li><li><a href=\"/contact\"><p style=\"padding-top: 10px;\">Contacts</p></a></li></ul></div></div></div><div class=\"container body-content\">{{!base}}</div><script src=\"/static/scripts/jquery-1.10.2.js\"></script><script src=\"/static/scripts/bootstrap.js\"></script><script src=\"/static/scripts/respond.js\"></script></body></html>"
 @post('/floyd', method='post')
 def func():
     str1= request.forms.get('TEXTFEALD')
@@ -134,15 +136,15 @@ def func():
     G.add_edges_from(edges)
 
     pos = planar_layout(G)
-    draw(G, pos = circular_layout(G), with_labels = True)
+    draw(G, pos = circular_layout(G), with_labels = True, arrows = True)
     savefig('./static/images/floydgraph.png')
     answer="<p class=\"txt_algn_centr\"><img src=\"./static/images/floydgraph.png\" alt=\"Graph\"></p>"
-    draw_networkx_edge_labels(G, pos)
+    draw_networkx_edge_labels(G, pos, font_size=0)
     fw = floyd_warshall(G, weight='weight')
 
     results = {a:dict(b) for a,b in fw.items()}
     close()
-    return str(results), answer
+    return back,(str(results)), answer
 ##################################################################################################
 @post('/Dijkstra', method='post')
 def func():
@@ -184,20 +186,22 @@ def checkGraph():
     if (len(str1.strip()) > 0):
         if (isMatrix(str1)):
             answer = "<head><link rel=\"stylesheet\" type=\"text/css\" href=\"/static/content/Stylesheet1.css\" /></head><body><br/><div class=\"brd\" align=\"center\">";
-            A = np.array(str_to_arr(str1.strip()))
+            inputArr = str_to_arr(str1.strip())
+            A = np.array(inputArr)
+            path = Hamilton(inputArr, np.empty(len(inputArr),dtype=int))
             G = DiGraph(A)
             if (tournament.is_strongly_connected(G)):
-                #pos = planar_layout(G)
-                #draw(G, pos = circular_layout(G), with_labels = True, arrows=False)
-                #savefig('./static/images/hamilton_graph.png')
-                #answer+="<p class=\"txt_algn_centr\"><img src=\"./static/images/hamilton_graph.png\" alt=\"Graph\"></p></div></body>"
-                #draw_networkx_edge_labels(G, pos)
-                #graph = str(tournament.hamiltonian_path(G))
-                return str(tournament.hamiltonian_path(G)), str(G.edges)
+                pos = planar_layout(G)
+                draw(G, pos = circular_layout(G), with_labels = True)
+                savefig('./static/images/hamilton_graph.png')
+                answer+="<p class=\"txt_algn_centr\"><img src=\"./static/images/hamilton_graph.png\" alt=\"Graph\"></p></div></body>"
+                draw_networkx_edge_labels(G, pos)
+
             else:
-                #graph = "No hamilton cycle inside!"
-                #answer +="</p></div></body>"
-                return "No! ", str(tournament.hamiltonian_path(G)), str(G.edges)
+                
+                answer +="</p></div></body>"
+            
+            return path.hamiltonianCycle(), answer
         else: 
             return "Matrix is incorrect"
     else:
@@ -222,5 +226,73 @@ def str_to_arr(str1):
         for j in range(len(mas1[i])):
             mas1[i][j] = int(mas[i][j])
     return mas1
+
+class Hamilton:
+    """description of class"""
+    graph = [[]]
+    path = []
+    def __init__(self, graph, path):
+        self.graph = graph
+        self.path = path
+
+
+    def isValid(self, v,k):
+        if (self.graph[self.path[k-1]][v]==0):
+            return False
+
+        for i in range(k):
+            if(self.path[i]==v):
+                return False
+        return True
+
+    def cycleFound(self, k):
+        if (k==len(self.graph)):
+            if(self.graph[self.path[k-1]][self.path[0]]==1):
+                return True
+            else:
+                return False
+
+        for v in range(1,len(self.graph)):
+            if (self.isValid(v,k)):
+                self.path[k]=v
+                if (self.cycleFound(k+1)==True):
+                    return True
+                self.path[k] = -1
+        return False
+
+    def hamiltonianCycle(self):
+        for i in range(len(self.graph)):
+            self.path[i]=-1
+        self.path[0]=0
+
+        if (self.cycleFound(1)==False):
+            return "No solution"
+        else:
+            res = ""
+            for i in range(len(self.path)):
+                res+=str(self.path[i]) + " "
+            res += str(self.path[0])
+            return res
+
+def str_to_graph(str1):
+    '''function to format user enter'''
+    '''DiGraph networkx'''
+    mas = str1.replace(" ", "").split(";")
+    if (mas[len(mas)-1] == ""):
+        mas.pop()
+    mas1 = []
+    for i in mas:
+        mas1.append(list(i))
+    for i in range(len(mas1)):
+        for j in range(len(mas1[i])):
+            mas1[i][j] = int(mas[i][j])
+    G = DiGraph()
+    for i in range(len(mas1)):
+        G.add_node(i+1) 
+    for i in range(len(mas1)):
+        for j in range(len(mas1[i])):
+            if(mas1[i][j] == 1):
+                G.add_edge(i,j)
+    return G
 
 
