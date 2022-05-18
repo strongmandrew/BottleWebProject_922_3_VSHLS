@@ -28,7 +28,7 @@
                     <li><a href="/Floyd"><p style="padding-top: 10px;">Floyd</p></a></li>
                     <li><a href="/Hamilton_method"><p style="padding-top: 10px;">Hamilton Method</p></a></li>
                     <li><a href="/Dijkstras_algorithm"><p style="padding-top: 10px;">Dijkstras_algorithm</p></a></li>
-                    <li><a href="/contact"><p style="padding-top: 10px;">Contact</p></a></li>
+                    <li><a href="/contact"><p style="padding-top: 10px;">Contacts</p></a></li>
                 </ul>
             </div>
         </div>
@@ -38,7 +38,7 @@
         {{!base}}
         <hr />
         <footer>
-            <p>&copy; {{ year }} - SolveGraph</p>
+            <p>&copy; {{ year }} - SolveGraph, SUAI</p>
         </footer>
     </div>
 

@@ -1,13 +1,13 @@
 """
 Routes and views for the bottle application.
 """
-from bottle import route, view, template, post, request, run, HTTPResponse
+from bottle import route, view, template, post, request, run, HTTPResponse, Bottle
 from datetime import datetime
 from networkx import from_edgelist, is_eulerian, eulerian_circuit,circular_layout, nodes, DiGraph, draw, Graph, planar_layout,draw_networkx_edge_labels,floyd_warshall
 from networkx.algorithms import tournament
 from pylab import savefig, close
 import re
-
+import numpy as np
 
 @route('/')
 @route('/home')
@@ -103,11 +103,11 @@ def function_transformation(str1):
             mas1[i][j] = int(mas[i][j])
     G = DiGraph()
     for i in range(len(mas1)):
-        G.add_node(i+1)
+        G.add_node(i+1) 
     for i in range(len(mas1)):
         for j in range(len(mas1[i])):
             if(mas1[i][j] == 1):
-                G.add_edge(i+1,j+1)  
+                G.add_edge(i+1,j+1)
     print(G)
     return G
 ##################################################################################################
@@ -144,86 +144,50 @@ def func():
     close()
     return str(results), answer
 
-def new_func():
-    G = Graph()
-    return G
 ##################################################################################################
 @post('/check', method='post')
 def checkGraph():
     str1= request.forms.get('text')
     if (len(str1.strip()) > 0):
         if (isMatrix(str1)):
-
-            G = function_transformation(str1.strip()) 
-            
-            return str(tournament.hamiltonian_path(G))
-
-        else:
-            return "Doesn't match the pattern of matrix"
+            answer = "<head><link rel=\"stylesheet\" type=\"text/css\" href=\"/static/content/Stylesheet1.css\" /></head><body><br/><div class=\"brd\" align=\"center\">";
+            A = np.array(str_to_arr(str1.strip()))
+            G = DiGraph(A)
+            if (tournament.is_strongly_connected(G)):
+                #pos = planar_layout(G)
+                #draw(G, pos = circular_layout(G), with_labels = True, arrows=False)
+                #savefig('./static/images/hamilton_graph.png')
+                #answer+="<p class=\"txt_algn_centr\"><img src=\"./static/images/hamilton_graph.png\" alt=\"Graph\"></p></div></body>"
+                #draw_networkx_edge_labels(G, pos)
+                #graph = str(tournament.hamiltonian_path(G))
+                return str(tournament.hamiltonian_path(G)), str(G.edges)
+            else:
+                #graph = "No hamilton cycle inside!"
+                #answer +="</p></div></body>"
+                return "No! ", str(tournament.hamiltonian_path(G)), str(G.edges)
+        else: 
+            return "Matrix is incorrect"
     else:
-        return "Fill in the blank with matrix"
-
+        return "Fill in the blank!"
 
 def isMatrix(inputStr):
     matrixPattern = re.compile(r'^[^A-Za-z2-9/\-><?).,<>|]+$')
     if matrixPattern.match(inputStr.strip()):
         return True
     else: return False
-
-class GraphHelper:
- 
-    # Constructor
-    def __init__(self, edges, n):
- 
-        # A list of lists to represent an adjacency list
-        self.adjList = [[] for _ in range(n)]
- 
-        # add edges to the undirected graph
-        for (src, dest) in edges:
-            self.adjList[src].append(dest)
-            self.adjList[dest].append(src)
- 
-def hamiltonianPaths(graph, v, visited, path, n):
- 
-    # if all the vertices are visited, then the Hamiltonian path exists
-    if len(path) == n:
-        # print the Hamiltonian path
-        res = "["
-        for s in path:
-            res += s + ", "
-        res += "]"
-        return res
- 
-    # Check if every edge starting from vertex `v` leads to a solution or not
-    for w in graph.adjList[v]:
- 
-        # process only unvisited vertices as the Hamiltonian
-        # path visit each vertex exactly once
-        if not visited[w]:
-            visited[w] = True
-            path.append(w)
- 
-            # check if adding vertex `w` to the path leads to the solution or not
-            hamiltonianPaths(graph, w, visited, path, n)
- 
-            # backtrack
-            visited[w] = False
-            path.pop()
- 
- 
-def findHamiltonianPaths(graph, n):
- 
-    # start with every node
-    for start in range(n):
- 
-        # add starting node to the path
-        path = [start]
     
-        # mark the start node as visited
-        visited = [False] * n
-        visited[start] = True
-    
-        hamiltonianPaths(graph, start, visited, path, n)
-
+def str_to_arr(str1):
+    '''function to format user enter'''
+    '''DiGraph networkx'''
+    mas = str1.replace(" ", "").split(";")
+    if (mas[len(mas)-1] == ""):
+        mas.pop()
+    mas1 = []
+    for i in mas:
+        mas1.append(list(i))
+    for i in range(len(mas1)):
+        for j in range(len(mas1[i])):
+            mas1[i][j] = int(mas[i][j])
+    return mas1
 
 
