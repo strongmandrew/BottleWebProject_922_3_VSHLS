@@ -4,7 +4,7 @@ Routes and views for the bottle application.
 import pprint
 from bottle import route, view, template, post, request, run, HTTPResponse, Bottle
 from datetime import datetime
-from networkx import from_edgelist, is_eulerian, eulerian_circuit,circular_layout, nodes, DiGraph, Graph, draw, planar_layout,draw_networkx_edge_labels,floyd_warshall,spring_layout
+from networkx import from_edgelist, is_eulerian, eulerian_circuit,circular_layout, nodes, DiGraph, Graph, draw, planar_layout, draw_networkx_edge_labels, floyd_warshall, spring_layout, shortest_path, shortest_path_length
 from networkx.algorithms import tournament
 from pylab import savefig, close
 import re
@@ -140,7 +140,7 @@ def func():
     draw(G, pos = circular_layout(G), with_labels = True, arrows = True)
     savefig('./static/images/floydgraph.png')
     answer="<p class=\"txt_algn_centr\"><img src=\"./static/images/floydgraph.png\" alt=\"Graph\"></p>"
-    draw_networkx_edge_labels(G, pos, font_size=0)
+    draw_networkx_edge_labels(G, pos)
     fw = floyd_warshall(G, weight='weight')
 
     results = {a:dict(b) for a,b in fw.items()}
@@ -170,16 +170,14 @@ def func():
     G.add_edges_from(edges)
 
     pos = planar_layout(G)
-    p1 = shortest_path(G, source=1, weight='weight')
+    p1 = shortest_path(G, source=None, weight='weight')
+    draw(G, pos = circular_layout(G), with_labels = True)
     savefig('./static/images/dijkstragraph.png')
     answer="<p class=\"txt_algn_centr\"><img src=\"./static/images/dijkstragraph.png\" alt=\"Graph\"></p>"
-    p1to6 = shortest_path(G, source=1, target=6, weight='weight')
-    length = shortest_path_length(G, source=1, target=6, weight='weight')
-    fw = floyd_warshall(G, weight='weight')
+    p1to6 = shortest_path(G, source=None, target=None, weight='weight')
+    length = shortest_path_length(G, source=None, target=None, weight='weight')
 
-    print("All shortest paths from 1: " + str(p1))
-    print("Shortest path from 1 to 6: " + str(p1to6))
-    print("Length of the shortest path: " + str(length))
+    return "All shortest paths: " + str(p1), '<p>', "Shortest path: " + str(p1to6), "</p><p> Length of the shortest path: " + str(length), '</p><p>', answer, "</p>"
 ##################################################################################################
 @post('/check', method='post')
 def checkGraph():
@@ -195,15 +193,15 @@ def checkGraph():
                 pos = planar_layout(G)
                 draw(G, pos = circular_layout(G), with_labels = True)
                 savefig('./static/images/hamilton_graph.png')
-                answer+="<p class=\"txt_algn_centr\"><img src=\"./static/images/hamilton_graph.png\" alt=\"Graph\"></p></div></body>"
+                answer="<p class=\"txt_algn_centr\"><img src=\"./static/images/hamilton_graph.png\" alt=\"Graph\"></p></div></body>"
                 draw_networkx_edge_labels(G, pos)
 
             else:
                 
-                answer +="</p></div></body>"
+                answer="</p></div></body>"
             
-            return path.hamiltonianCycle(), answer
-        else: 
+            return back, path.hamiltonianCycle(), answer
+        else:
             return "Matrix is incorrect"
     else:
         return "Fill in the blank!"
