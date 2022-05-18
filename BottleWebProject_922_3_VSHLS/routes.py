@@ -134,7 +134,7 @@ def func():
     G.add_edges_from(edges)
 
     pos = planar_layout(G)
-    draw(G, pos = circular_layout(G), with_labels = True)
+    draw(G, pos = circular_layout(G), with_labels = True, arrows = True)
     savefig('./static/images/floydgraph.png')
     answer="<p class=\"txt_algn_centr\"><img src=\"./static/images/floydgraph.png\" alt=\"Graph\"></p>"
     draw_networkx_edge_labels(G, pos)
