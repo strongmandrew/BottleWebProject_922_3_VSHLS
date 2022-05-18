@@ -139,7 +139,7 @@ def func():
     draw(G, pos = circular_layout(G), with_labels = True, arrows = True)
     savefig('./static/images/floydgraph.png')
     answer="<p class=\"txt_algn_centr\"><img src=\"./static/images/floydgraph.png\" alt=\"Graph\"></p>"
-    draw_networkx_edge_labels(G, pos, font_size=0)
+    draw_networkx_edge_labels(G, pos)
     fw = floyd_warshall(G, weight='weight')
 
     results = {a:dict(b) for a,b in fw.items()}
@@ -194,15 +194,15 @@ def checkGraph():
                 pos = planar_layout(G)
                 draw(G, pos = circular_layout(G), with_labels = True)
                 savefig('./static/images/hamilton_graph.png')
-                answer+="<p class=\"txt_algn_centr\"><img src=\"./static/images/hamilton_graph.png\" alt=\"Graph\"></p></div></body>"
+                answer="<p class=\"txt_algn_centr\"><img src=\"./static/images/hamilton_graph.png\" alt=\"Graph\"></p></div></body>"
                 draw_networkx_edge_labels(G, pos)
 
             else:
                 
-                answer +="</p></div></body>"
+                answer="</p></div></body>"
             
-            return path.hamiltonianCycle(), answer
-        else: 
+            return back, path.hamiltonianCycle(), answer
+        else:
             return "Matrix is incorrect"
     else:
         return "Fill in the blank!"
