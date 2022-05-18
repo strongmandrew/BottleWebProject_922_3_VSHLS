@@ -10,7 +10,7 @@
   Enter the matrix with intengers
   </p>
   <form action="/Dijkstra" method="post">
-  <input class="btn btn-default" margin-bottom="5px" name = "atext" id = "mat" style = "width = 150px height=50px" height="25px"></input>
+  <input class="btn btn-default" margin-bottom="5px" name = "atext" id = "mat" style = "width = 200px height=100px" height="50px"></input>
 <br>
 <button class="btn btn-default"> Solve </button>
 <div class="brd" align="center">
