@@ -51,6 +51,9 @@ p {
 }
 
 .brd {
+    text-align: center;
+    align-self:center;
+    align-content: center;
     border: 5px black; /* Параметры границы */
     padding: 10px; /* Поля вокруг текста */
     border-style: inset; /*solid;*/
