@@ -4,13 +4,17 @@
 </head>
 <br/>
 
-<h2 align="center" margin"0 10 0 0">
-    SolveGraph team at work. From left to right: Lisin Mikhail, Verigo Andrey, Stepanov Nikita
-</h2>
-
+<h1 align="center">
+    SolveGraph Ltd.
+</h1>
+<br>
+<figure>
 <p>
-    <img class="photo-stl" src="./static/images/team_photo.jpg" />
+    <img class="logo-stl" src="./static/images/team_photo.jpg" />
 </p>
+    <figcaption align="center">SolveGraph team at work. From left to right: Lisin Mikhail, Verigo Andrey, Stepanov Nikita</figcaption>
+</figure>
+
 
 <p>
     <h2>Credits</h2>
@@ -18,4 +22,9 @@
     Shtokman Andrew: <a href="https://github.com/aaandrewww666" target="_blank" >@aaandrewww666</a><br />
     Lisin Michael: <a href="https://github.com/gassgg" target="_blank">@gassgg </a><br/>
     Stepanov Nikita: <a href="https://github.com/nikitacoll" target="_blank" >@nikitacoll</a>
+    
+    
 </p>
+<br>
+<p>Any problems/suggestions submit to <b>solve_graph@gmail.com</b></p>
+
