@@ -18,7 +18,7 @@
     <SuppressCollectPythonCloudServiceFiles>true</SuppressCollectPythonCloudServiceFiles>
     <Name>BottleWebProject_922_3_VSHLS</Name>
     <RootNamespace>BottleWebProject_922_3_VSHLS</RootNamespace>
-    <InterpreterId>MSBuild|env1|$(MSBuildProjectFullPath)</InterpreterId>
+    <InterpreterId>MSBuild|env_python3_9|$(MSBuildProjectFullPath)</InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -56,6 +56,7 @@
     <Content Include="static\images\matrix.png" />
     <Content Include="static\images\matrix1.png" />
     <Content Include="static\images\solve_logo.PNG" />
+    <Content Include="static\images\team_photo.jpg" />
     <Content Include="static\scripts\bootstrap.js" />
     <Content Include="static\scripts\bootstrap.min.js" />
     <Content Include="static\scripts\jquery-1.10.2.intellisense.js" />
@@ -77,6 +78,7 @@
     </Content>
     <Content Include="views\Floyd.tpl" />
     <Content Include="views\Hamilton_method.tpl" />
+    <Content Include="views\hamilton_result.tpl" />
     <Content Include="views\index.tpl" />
     <Content Include="views\layout.tpl" />
     <Content Include="views\The_Euler_cycle.tpl">

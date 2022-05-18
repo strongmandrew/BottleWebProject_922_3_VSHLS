@@ -4,14 +4,18 @@
 </head>
 <br/>
 
+<h2 align="center" margin"0 10 0 0">
+    SolveGraph team at work. From left to right: Lisin Mikhail, Verigo Andrey, Stepanov Nikita
+</h2>
+
 <p>
-    FSPO<br/>
-    GUAP<br/>
+    <img class="photo-stl" src="./static/images/team_photo.jpg" />
 </p>
 
 <p>
-    Verigo Andrew: vad30001@gmail.com<br/>
-    Shtokman Andrew: aaandrewww666@mail.ru<br />
-    Lisin Michael: mikhail.lisin.312@mail.ru<br />
-    Stepanov Nikita: nstepanov85@gmail.com
+    <h2>Credits</h2>
+    Verigo Andrew: <a href="https://github.com/strongmandrew" target="_blank" >@strongmandrew</a><br/>
+    Shtokman Andrew: <a href="https://github.com/aaandrewww666" target="_blank" >@aaandrewww666</a><br />
+    Lisin Michael: <a href="https://github.com/gassgg" target="_blank">@gassgg </a><br/>
+    Stepanov Nikita: <a href="https://github.com/nikitacoll" target="_blank" >@nikitacoll</a>
 </p>
