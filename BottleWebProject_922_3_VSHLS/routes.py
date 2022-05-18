@@ -79,7 +79,7 @@ def funcEuler():
         s = str(list(eulerian_circuit(G,source = 1)))
         result = s[1 : -1].replace("),",") ->")
         answer+="<p class=\"txt_algn_centr\">Graph is Euler</p><p class=\"txt_algn_centr\">Euler cycle: " + result +"</p>";
-        draw(G,pos =spring_layout(G), with_labels = True, node_size = 700,arrowsize = 20, node_color = 'r', font_family = 'Verdana', arrows = True)
+        draw(G,pos =spring_layout(G), with_labels = True, node_size = 700,arrowsize = 20, font_family = 'Verdana', arrows = True)
         savefig('./static/images/Euler/graph.png')
         close()
         answer+="<p class=\"txt_algn_centr\"><img src=\"./static/images/Euler/graph.png\" alt=\"Graph\"></p>"
