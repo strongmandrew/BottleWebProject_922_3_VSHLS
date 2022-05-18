@@ -87,7 +87,7 @@ def funcEuler():
     else:
         answer+="<p class=\"txt_algn_centr\">Graph is not Euler</p>"
         answer +="</div></body>"
-    return answer
+    return back,answer
     #else:
         #return "Doesn't match the pattern of matrix"
 ##################################################################################################
@@ -113,6 +113,7 @@ def function_transformation(str1):
     return G
 ##################################################################################################
 back = "<!DOCTYPE html><html><head><meta charset=\"utf-8\" /><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title>SolveGraph</title><link rel=\"stylesheet\" type=\"text/css\" href=\"/static/content/bootstrap.min.css\" /><link rel=\"stylesheet\" type=\"text/css\" href=\"/static/content/site.css\" /><link rel=\"stylesheet\" type=\"text/css\" href=\"/static/content/Stylesheet1.css\" /><link rel=\"icon\" href=\"./static/images/solve_logo.PNG\" class=\"icon-stl\"/><script src=\"/static/scripts/modernizr-2.6.2.js\"></script></head><body><div class=\"navbar navbar-inverse navbar-fixed-top\"><div class=\"container\"><div class=\"navbar-header\"><button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar-collapse\"><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span></button><a href=\"/\"  class=\"navbar-brand\"><img class=\"logo-stl\" src=\"./static/images/solve_logo.PNG\" width=\"40\" height=\"40\"></a></div><div class=\"navbar-collapse collapse\"><ul class=\"nav navbar-nav\"><li><a href=\"/The_Euler_cycle\"><p style=\"padding-top: 10px;\">The Euler cycle</p></a></li>                    <li><a href=\"/Floyd\"><p style=\"padding-top: 10px;\">Floyd</p></a></li><li><a href=\"/Hamilton_method\"><p style=\"padding-top: 10px;\">Hamilton Method</p></a></li><li><a href=\"/Dijkstras_algorithm\"><p style=\"padding-top: 10px;\">Dijkstras algorithm</p></a></li><li><a href=\"/contact\"><p style=\"padding-top: 10px;\">Contacts</p></a></li></ul></div></div></div><div class=\"container body-content\">{{!base}}</div><script src=\"/static/scripts/jquery-1.10.2.js\"></script><script src=\"/static/scripts/bootstrap.js\"></script><script src=\"/static/scripts/respond.js\"></script></body></html>"
+##################################################################################################
 @post('/floyd', method='post')
 def func():
     str1= request.forms.get('TEXTFEALD')
@@ -204,13 +205,13 @@ def checkGraph():
             return "Matrix is incorrect"
     else:
         return "Fill in the blank!"
-
+##################################################################################################
 def isMatrix(inputStr):
     matrixPattern = re.compile(r'^[^A-Za-z2-9/\-><?).,<>|]+$')
     if matrixPattern.match(inputStr.strip()):
         return True
     else: return False
-    
+##################################################################################################
 def str_to_arr(str1):
     '''function to format user enter'''
     '''DiGraph networkx'''
@@ -224,7 +225,7 @@ def str_to_arr(str1):
         for j in range(len(mas1[i])):
             mas1[i][j] = int(mas[i][j])
     return mas1
-
+##################################################################################################
 class Hamilton:
     """description of class"""
     graph = [[]]
