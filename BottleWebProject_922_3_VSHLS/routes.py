@@ -146,7 +146,7 @@ def func():
 ##################################################################################################
 @post('/Dijkstra', method='post')
 def func():
-    str1= request.forms.get('text')
+    str1= request.forms.get('atext')
     count = 0
     cnt = 0
     str1 = str1.replace(" ", "")
