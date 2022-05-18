@@ -73,7 +73,7 @@ def funcEuler():
     
     #if (isMatrix(str1)):
     G = function_transformation(str1)
-    answer = "<head><link rel=\"stylesheet\" type=\"text/css\" href=\"/static/content/Stylesheet1.css\" /></head><body><br/><div class=\"brd\" align=\"center\">";
+    answer = "<head><link rel=\"stylesheet\" type=\"text/css\" href=\"/static/content/Stylesheet1.css\" /></head><body><br/><div class=\"brd\" align=\"center\"> <input class=\"btn btn-default\" type=\"button\" onclick=\"history.back();\" value=\"Back\">";
     
     if(is_eulerian(G)):
         s = str(list(eulerian_circuit(G,source = 1)))
