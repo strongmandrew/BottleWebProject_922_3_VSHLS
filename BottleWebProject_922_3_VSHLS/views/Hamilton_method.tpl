@@ -1,6 +1,8 @@
 % rebase('layout.tpl', title='Hamilton method', year=year)
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>SolveGraph</title>
+	<meta charset="UTF-8"/>
 	<style>
 		h1{
 			text-align: center;
@@ -38,6 +40,7 @@
 		}
 	</style>
     <link rel="stylesheet" type="text/css" href="/static/content/Stylesheet1.css" />
+	<title>Hamiltonian Cycle</title>
 </head>
 <body>
 	<br>
@@ -82,3 +85,4 @@
 	</div>
 
 </body>
+</html>
