@@ -13,3 +13,8 @@ Entry user: [[1, 1, 1], [1, 1, 1], [1, 1, 1]]
 Hamiltonian cycle for the graph is [1 2 3 1]
 Date: 2022-05-19 Time: 12:21:05
 
+Method: Hamiltonian cycle
+Entry user: [[1, 1, 1], [1, 1, 1], [1, 1, 1]]
+Hamiltonian cycle for the graph is [1 2 3 1]
+Date: 2022-05-19 Time: 13:25:49
+

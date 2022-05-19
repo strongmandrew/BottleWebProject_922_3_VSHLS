@@ -182,22 +182,22 @@ def funcA():
             count + 1
             cnt + 1
             mas1[i][j] = (mas[i][j])
-            
-    edges = mas1       
+      
+    edges = mas1
     G = Graph()
     for i in range(1, cnt):
         G.add_node(i)
     G.add_edges_from(edges)
 
     pos = planar_layout(G)
-    p1 = shortest_path(G, source=None, weight='weight')
-    draw(G, pos = circular_layout(G), with_labels = True, arrows = True)
+    p = shortest_path(G, source=None, weight='weight')
+    draw(G, pos = circular_layout(G), with_labels = True)
     savefig('./static/images/dijkstragraph.png')
     answer="<p class=\"txt_algn_centr\"><img src=\"./static/images/dijkstragraph.png\" alt=\"Graph\"></p>"
-    p1to6 = shortest_path(G, source=None, target=None, weight='weight')
+    pto = shortest_path(G, source=None, target=None, weight='weight')
     length = shortest_path_length(G, source=None, target=None, weight='weight')
 
-    return "All shortest paths: " + str(p1), '<p>', "Shortest path: " + str(p1to6), "</p><p> Length of the shortest path: " + str(length), '</p><p>', answer, "</p>"
+    return "<h1> All shortest paths: " + str(p), '<p>', "Shortest path: " + str(pto), "</p><p> Length of the shortest path: " + str(length), '</p><p>', answer, "</p> </h1>"
 ##################################################################################################
 @post('/check', method='post')
 def checkGraph():
