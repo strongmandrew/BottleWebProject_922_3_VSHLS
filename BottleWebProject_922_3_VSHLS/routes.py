@@ -2,11 +2,13 @@
 Routes and views for the bottle application.
 """
 import pprint
+from datetime import datetime
 from bottle import route, view, template, post, request, run, HTTPResponse, Bottle
 from datetime import datetime
 from networkx import from_edgelist, is_eulerian, eulerian_circuit,circular_layout, nodes, DiGraph, Graph, draw, planar_layout, draw_networkx_edge_labels, floyd_warshall, spring_layout, shortest_path, shortest_path_length
 from networkx.algorithms import tournament
 from pylab import savefig, close
+import sys
 import re
 import numpy as np
 
@@ -75,18 +77,21 @@ def funcEuler():
     #if (isMatrix(str1)):
     G = function_transformation(str1)
     answer = "<head><link rel=\"stylesheet\" type=\"text/css\" href=\"/static/content/Stylesheet1.css\" /></head><body><br/><div class=\"brd\" align=\"center\"> <input class=\"btn btn-default\" type=\"button\" onclick=\"history.back();\" value=\"Back\">";
-    
+    result = ""
     if(is_eulerian(G)):
         s = str(list(eulerian_circuit(G,source = 1)))
-        result = s[1 : -1].replace("),",") ->")
-        answer+="<p class=\"txt_algn_centr\">Graph is Euler</p><p class=\"txt_algn_centr\">Euler cycle: " + result +"</p>";
+        result = "Graph is Euler"
+        answer+="<p class=\"txt_algn_centr\">"+result+"</p><p class=\"txt_algn_centr\">Euler cycle: " + s[1 : -1].replace("),",") ->") +"</p>";
         draw(G,pos =spring_layout(G), with_labels = True, node_size = 700,arrowsize = 20, font_family = 'Verdana', arrows = True)
         savefig('./static/images/Euler/graph.png')
         close()
         answer+="<p class=\"txt_algn_centr\"><img src=\"./static/images/Euler/graph.png\" alt=\"Graph\"></p>"
+        result += "\nEuler cycle: " + s
     else:
-        answer+="<p class=\"txt_algn_centr\">Graph is not Euler</p>"
+        result = "Graph is not Euler"
+        answer+="<p class=\"txt_algn_centr\">"+result+"</p>"
         answer +="</div></body>"
+    entryToFile("Euler",str1,result)
     return back,answer
     #else:
         #return "Doesn't match the pattern of matrix"
@@ -243,7 +248,7 @@ class Hamilton:
             if(self.path[i]==v):
                 return False
         return True
-
+    ##################################################################################################
     def cycleFound(self, k):
         if (k==len(self.graph)):
             if(self.graph[self.path[k-1]][self.path[0]]==1):
@@ -258,7 +263,7 @@ class Hamilton:
                     return True
                 self.path[k] = -1
         return False
-
+    ##################################################################################################
     def hamiltonianCycle(self):
         for i in range(len(self.graph)):
             self.path[i]=-1
@@ -272,7 +277,7 @@ class Hamilton:
                 res+=str(self.path[i]) + " "
             res += str(self.path[0])
             return res
-
+##################################################################################################
 def str_to_graph(str1):
     '''function to format user enter'''
     '''DiGraph networkx'''
@@ -293,5 +298,8 @@ def str_to_graph(str1):
             if(mas1[i][j] == 1):
                 G.add_edge(i,j)
     return G
-
-
+##################################################################################################
+def entryToFile(nameMethod,entryUser,result):
+    today = datetime.today()
+    with open('./static/userData/data.txt','a',encoding= sys.stdout.encoding) as outfile:
+        outfile.writelines("Method: " + nameMethod + "\nEntry user: " + entryUser + "\n" +result + "\nDate: " + today.strftime("%Y-%m-%d Time: %H:%M:%S") + "\n\n")
