@@ -196,7 +196,7 @@ def checkGraph():
             inputArr = str_to_arr(str1.strip())
             A = np.array(inputArr)
             path = Hamilton(inputArr, np.empty(len(inputArr),dtype=int))
-            G = DiGraph(A)
+            G = function_transformation(str1.strip())
             result = path.hamiltonianCycle()
 
             answer+="<p class=\"txt_algn_centr\">"+result+"</p>"
@@ -204,7 +204,9 @@ def checkGraph():
             draw(G, pos = circular_layout(G), with_labels = True)
             savefig('./static/images/hamilton_graph.png')
             close()
-            answer+="<p class=\"txt_algn_centr\"><img src=\"./static/images/hamilton_graph.png\" alt=\"Graph\"></p> <input class=\"btn btn-default\" type=\"button\" onclick=\"history.back();\" value=\"Back\"></div></body>"         
+            answer+="<p class=\"txt_algn_centr\"><img src=\"./static/images/hamilton_graph.png\" alt=\"Graph\"></p> <input class=\"btn btn-default\" type=\"button\" onclick=\"history.back();\" value=\"Back\"></div></body>" 
+            
+            entryToFile("Hamiltonian cycle", str(inputArr), result)
             
             return back, answer
         else:
@@ -250,7 +252,7 @@ class Hamilton:
             if(self.path[i]==v):
                 return False
         return True
-    ##################################################################################################
+    
     def cycleFound(self, k):
         if (k==len(self.graph)):
             if(self.graph[self.path[k-1]][self.path[0]]==1):
@@ -265,7 +267,7 @@ class Hamilton:
                     return True
                 self.path[k] = -1
         return False
-    ##################################################################################################
+    
     def hamiltonianCycle(self):
         for i in range(len(self.graph)):
             self.path[i]=-1
@@ -276,8 +278,8 @@ class Hamilton:
         else:
             res = "Hamiltonian cycle for the graph is ["
             for i in range(len(self.path)):
-                res+=str(self.path[i]) + " "
-            res += str(self.path[0]) + "]"
+                res+=str(self.path[i]+1) + " "
+            res += str(self.path[0]+1) + "]"
             return res
 ##################################################################################################
 def str_to_graph(str1):
