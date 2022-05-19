@@ -52,7 +52,7 @@
 	<p>This service provides finding the Euler cycle if the graph is an Euler graph</p>
 	<br/>
 	<form action="/Euler" method="post">
-		<p>Enter matrix: <input class="btn btn-default" type = "text" name="Matrix_dimension" required pattern="^[0-1;]+$" placeholder="111;111;111" autofocus>
+		<p>Enter matrix: <input class="btn btn-default" type = "text" name="Matrix_dimension" placeholder="111;111;111" autofocus>
 		<input class="btn btn-default" type="submit" value="Solve"></p>
 		<br/>
 	</form>
