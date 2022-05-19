@@ -183,24 +183,23 @@ def func():
 def checkGraph():
     str1= request.forms.get('text')
     if (len(str1.strip()) > 0):
+
         if (isMatrix(str1)):
-            answer = "<head><link rel=\"stylesheet\" type=\"text/css\" href=\"/static/content/Stylesheet1.css\" /></head><body><br/><div class=\"brd\" align=\"center\">";
+            answer = "<head><link rel=\"stylesheet\" type=\"text/css\" href=\"/static/content/Stylesheet1.css\" /></head><body><br/><div align=\"center\">";
             inputArr = str_to_arr(str1.strip())
             A = np.array(inputArr)
             path = Hamilton(inputArr, np.empty(len(inputArr),dtype=int))
             G = DiGraph(A)
-            if (tournament.is_strongly_connected(G)):
-                pos = planar_layout(G)
-                draw(G, pos = circular_layout(G), with_labels = True)
-                savefig('./static/images/hamilton_graph.png')
-                answer="<p class=\"txt_algn_centr\"><img src=\"./static/images/hamilton_graph.png\" alt=\"Graph\"></p></div></body>"
-                draw_networkx_edge_labels(G, pos)
+            result = path.hamiltonianCycle()
 
-            else:
+            answer+="<p class=\"txt_algn_centr\">"+result+"</p>"
                 
-                answer="</p></div></body>"
+            draw(G, pos = circular_layout(G), with_labels = True)
+            savefig('./static/images/hamilton_graph.png')
+            close()
+            answer+="<p class=\"txt_algn_centr\"><img src=\"./static/images/hamilton_graph.png\" alt=\"Graph\"></p> <input class=\"btn btn-default\" type=\"button\" onclick=\"history.back();\" value=\"Back\"></div></body>"         
             
-            return back, path.hamiltonianCycle(), answer
+            return back, answer
         else:
             return "Matrix is incorrect"
     else:
@@ -234,7 +233,6 @@ class Hamilton:
         self.graph = graph
         self.path = path
 
-
     def isValid(self, v,k):
         if (self.graph[self.path[k-1]][v]==0):
             return False
@@ -265,12 +263,12 @@ class Hamilton:
         self.path[0]=0
 
         if (self.cycleFound(1)==False):
-            return "No solution"
+            return "No hamiltonian cycle for that graph!"
         else:
-            res = ""
+            res = "Hamiltonian cycle for the graph is ["
             for i in range(len(self.path)):
                 res+=str(self.path[i]) + " "
-            res += str(self.path[0])
+            res += str(self.path[0]) + "]"
             return res
 
 def str_to_graph(str1):
