@@ -59,6 +59,11 @@ p {
     border-style: inset; /*solid;*/
     border-collapse: collapse;
 }
+
+content-centerer {
+    align-content:center
+}
+
 .button-stl {
     background-color: transparent;
     display: inline-block;

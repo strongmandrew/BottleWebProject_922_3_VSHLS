@@ -44,7 +44,7 @@
 </head>
 <body>
 	<br>
-    <h1 align="center">Hamiltonian cycle</h1>
+    <h1 class="content-centerer">Hamiltonian cycle</h1>
     <br>
     <p>A Hamiltonian cycle (or Hamiltonian circuit) is a cycle that visits each vertex <b>exactly once</b></p>
     <form action="/check" method="post">

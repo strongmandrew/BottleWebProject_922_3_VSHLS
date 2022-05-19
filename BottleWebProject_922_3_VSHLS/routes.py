@@ -234,6 +234,15 @@ def isMatrix(inputStr):
     if matrixPattern.match(inputStr.strip()):
         return True
     else: return False
+
+##################################################################################################
+def isFloyd(inputStr):
+###function to check pattern in input string###
+    matrixPattern = re.compile('^(?:\d{2}\,?)+\d{2}?$')
+    #matrixPattern = re.compile(r'^[^A-Za-z2-9/\-><?).,<>|]+$')
+    if matrixPattern.match(inputStr.strip()):
+        return True
+    else: return False
 ##################################################################################################
 def str_to_arr(str1):
     '''function to format user enter'''
@@ -320,3 +329,32 @@ def entryToFile(nameMethod,entryUser,result):
     today = datetime.today()
     with open('./static/userData/data.txt','a',encoding= sys.stdout.encoding) as outfile:
         outfile.writelines("Method: " + nameMethod + "\nEntry user: " + entryUser + "\n" +result + "\nDate: " + today.strftime("%Y-%m-%d Time: %H:%M:%S") + "\n\n")
+
+def Floydclone(str1):
+    cnt = 0
+    cont = 0
+    str1 = str1.replace(" ", "")
+    mas = str1.split(",")
+    mas1 = []
+    for i in mas:
+        mas1.append(list(i))
+    for i in range(len(mas1)):
+        for j in range(len(mas1[i])):
+            cnt + 0.5
+            cont +1
+            mas1[i][j] = (mas[i][j])
+
+    edges = mas1       
+    G = Graph()
+    for i in range(1,cnt):
+        G.add_node(i)
+    G.add_edges_from(edges)
+
+    pos = planar_layout(G)
+    draw(G, pos = circular_layout(G), with_labels = True, arrows = True)
+    draw_networkx_edge_labels(G, pos)
+    fw = floyd_warshall(G)
+
+    results = {a:dict(b) for a,b in fw.items()}
+
+    return str(results)
