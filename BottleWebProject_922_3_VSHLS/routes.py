@@ -170,7 +170,7 @@ def func():
 
     pos = planar_layout(G)
     p1 = shortest_path(G, source=None, weight='weight')
-    draw(G, pos = circular_layout(G), with_labels = True)
+    draw(G, pos = circular_layout(G), with_labels = True, arrows = True)
     savefig('./static/images/dijkstragraph.png')
     answer="<p class=\"txt_algn_centr\"><img src=\"./static/images/dijkstragraph.png\" alt=\"Graph\"></p>"
     p1to6 = shortest_path(G, source=None, target=None, weight='weight')
