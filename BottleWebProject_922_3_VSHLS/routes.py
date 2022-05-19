@@ -73,28 +73,30 @@ def Dijkstras_algorithm():
 def funcEuler():
 ###the method returns a string with Euler cycle if graph is Euler overwise the method returns a string that graph is not Euler###
     str1= request.forms.get('Matrix_dimension').strip()
-    
-    #if (isMatrix(str1)):
-    G = function_transformation(str1)
     answer = "<head><link rel=\"stylesheet\" type=\"text/css\" href=\"/static/content/Stylesheet1.css\" /></head><body><br/><div class=\"brd\" align=\"center\"> <input class=\"btn btn-default\" type=\"button\" onclick=\"history.back();\" value=\"Back\">";
-    result = ""
-    if(is_eulerian(G)):
-        s = str(list(eulerian_circuit(G,source = 1)))
-        result = "Graph is Euler"
-        answer+="<p class=\"txt_algn_centr\">"+result+"</p><p class=\"txt_algn_centr\">Euler cycle: " + s[1 : -1].replace("),",") ->") +"</p>";
-        draw(G,pos =spring_layout(G), with_labels = True, node_size = 700,arrowsize = 20, font_family = 'Verdana', arrows = True)
-        savefig('./static/images/Euler/graph.png')
-        close()
-        answer+="<p class=\"txt_algn_centr\"><img src=\"./static/images/Euler/graph.png\" alt=\"Graph\"></p>"
-        result += "\nEuler cycle: " + s
+    if (isMatrix(str1)):
+        G = function_transformation(str1)
+        result = ""
+        if(is_eulerian(G)):
+            s = str(list(eulerian_circuit(G,source = 1)))
+            result = "Graph is Euler"
+            answer+="<p class=\"txt_algn_centr\">"+result+"</p><p class=\"txt_algn_centr\">Euler cycle: " + s[1 : -1].replace("),",") ->") +"</p>";
+            draw(G,pos =spring_layout(G), with_labels = True, node_size = 700,arrowsize = 20, font_family = 'Verdana', arrows = True)
+            savefig('./static/images/Euler/graph.png')
+            close()
+            answer+="<p class=\"txt_algn_centr\"><img src=\"./static/images/Euler/graph.png\" alt=\"Graph\"></p>"
+            result += "\nEuler cycle: " + s
+        else:
+            result = "Graph is not Euler"
+            answer+="<p class=\"txt_algn_centr\">"+result+"</p>"
+            answer +="</div></body>"
+        entryToFile("Euler",str1,result)
+        return back,answer
     else:
-        result = "Graph is not Euler"
+        result = "Doesn't match the pattern of matrix"
+        entryToFile("Euler",str1,result)
         answer+="<p class=\"txt_algn_centr\">"+result+"</p>"
-        answer +="</div></body>"
-    entryToFile("Euler",str1,result)
-    return back,answer
-    #else:
-        #return "Doesn't match the pattern of matrix"
+        return back, answer
 ##################################################################################################
 def function_transformation(str1):
     '''function to format user enter'''
@@ -212,7 +214,9 @@ def checkGraph():
         return "Fill in the blank!"
 ##################################################################################################
 def isMatrix(inputStr):
-    matrixPattern = re.compile(r'^[^A-Za-z2-9/\-><?).,<>|]+$')
+###function to check pattern in input string###
+    matrixPattern = re.compile('^[0-1;]+$')
+    #matrixPattern = re.compile(r'^[^A-Za-z2-9/\-><?).,<>|]+$')
     if matrixPattern.match(inputStr.strip()):
         return True
     else: return False
