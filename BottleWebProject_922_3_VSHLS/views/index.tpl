@@ -15,7 +15,7 @@
         <div class="col-md-3">
             <h1>The Euler cycle</h1>
             <p>The Euler path (chain) passes through each edge of the graph exactly once. An Euler cycle is a closed path that passes through each edge of the graph exactly once. Finding the Euler cycle.</p>
-            <p><a class="btn btn-default" href="/The_Euler_cycle">Continue &raquo;</a></p>
+            <p><a class="btn btn-default" href="/theEulerCycle">Continue &raquo;</a></p>
         </div>
         <div class="col-md-3 ">
             <h1>Dijkstra's algorithm</h1>

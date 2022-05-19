@@ -81,7 +81,7 @@
     <Content Include="views\hamilton_result.tpl" />
     <Content Include="views\index.tpl" />
     <Content Include="views\layout.tpl" />
-    <Content Include="views\The_Euler_cycle.tpl">
+    <Content Include="views\theEulerCycle.tpl">
       <SubType>Code</SubType>
     </Content>
   </ItemGroup>

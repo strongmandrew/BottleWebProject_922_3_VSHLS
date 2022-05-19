@@ -31,9 +31,9 @@ def contact():
         year=datetime.now().year
     )
 ##################################################################################################
-@route('/The_Euler_cycle')
-@view('The_Euler_cycle')
-def The_Euler_cycle():
+@route('/theEulerCycle')
+@view('theEulerCycle')
+def theEulerCycle():
     """Renders the about page."""
     return dict(
         title='The Euler cycle',
@@ -267,7 +267,6 @@ class Hamilton:
                     return True
                 self.path[k] = -1
         return False
-    ##################################################################################################
     def hamiltonianCycle(self):
         for i in range(len(self.graph)):
             self.path[i]=-1

@@ -1,6 +1,0 @@
-Method: Euler
-Entry user: 11;11
-Graph is Euler
-Euler cycle: [(1, 2), (2, 2), (2, 1), (1, 1)]
-Date: 2022-05-19 Time: 11:48:34
-
