@@ -2,11 +2,13 @@
 Routes and views for the bottle application.
 """
 import pprint
+from datetime import datetime
 from bottle import route, view, template, post, request, run, HTTPResponse, Bottle
 from datetime import datetime
 from networkx import from_edgelist, is_eulerian, eulerian_circuit,circular_layout, nodes, DiGraph, Graph, draw, planar_layout, draw_networkx_edge_labels, floyd_warshall, spring_layout, shortest_path, shortest_path_length
 from networkx.algorithms import tournament
 from pylab import savefig, close
+import sys
 import re
 import numpy as np
 
@@ -71,25 +73,30 @@ def Dijkstras_algorithm():
 def funcEuler():
 ###the method returns a string with Euler cycle if graph is Euler overwise the method returns a string that graph is not Euler###
     str1= request.forms.get('Matrix_dimension').strip()
-    
-    #if (isMatrix(str1)):
-    G = function_transformation(str1)
     answer = "<head><link rel=\"stylesheet\" type=\"text/css\" href=\"/static/content/Stylesheet1.css\" /></head><body><br/><div class=\"brd\" align=\"center\"> <input class=\"btn btn-default\" type=\"button\" onclick=\"history.back();\" value=\"Back\">";
-    
-    if(is_eulerian(G)):
-        s = str(list(eulerian_circuit(G,source = 1)))
-        result = s[1 : -1].replace("),",") ->")
-        answer+="<p class=\"txt_algn_centr\">Graph is Euler</p><p class=\"txt_algn_centr\">Euler cycle: " + result +"</p>";
-        draw(G,pos =spring_layout(G), with_labels = True, node_size = 700,arrowsize = 20, font_family = 'Verdana', arrows = True)
-        savefig('./static/images/Euler/graph.png')
-        close()
-        answer+="<p class=\"txt_algn_centr\"><img src=\"./static/images/Euler/graph.png\" alt=\"Graph\"></p>"
+    if (isMatrix(str1)):
+        G = function_transformation(str1)
+        result = ""
+        if(is_eulerian(G)):
+            s = str(list(eulerian_circuit(G,source = 1)))
+            result = "Graph is Euler"
+            answer+="<p class=\"txt_algn_centr\">"+result+"</p><p class=\"txt_algn_centr\">Euler cycle: " + s[1 : -1].replace("),",") ->") +"</p>";
+            draw(G,pos =spring_layout(G), with_labels = True, node_size = 700,arrowsize = 20, font_family = 'Verdana', arrows = True)
+            savefig('./static/images/Euler/graph.png')
+            close()
+            answer+="<p class=\"txt_algn_centr\"><img src=\"./static/images/Euler/graph.png\" alt=\"Graph\"></p>"
+            result += "\nEuler cycle: " + s
+        else:
+            result = "Graph is not Euler"
+            answer+="<p class=\"txt_algn_centr\">"+result+"</p>"
+            answer +="</div></body>"
+        entryToFile("Euler",str1,result)
+        return back,answer
     else:
-        answer+="<p class=\"txt_algn_centr\">Graph is not Euler</p>"
-        answer +="</div></body>"
-    return answer
-    #else:
-        #return "Doesn't match the pattern of matrix"
+        result = "Doesn't match the pattern of matrix"
+        entryToFile("Euler",str1,result)
+        answer+="<p class=\"txt_algn_centr\">"+result+"</p>"
+        return back, answer
 ##################################################################################################
 def function_transformation(str1):
     '''function to format user enter'''
@@ -113,6 +120,16 @@ def function_transformation(str1):
     return G
 ##################################################################################################
 back = "<!DOCTYPE html><html><head><meta charset=\"utf-8\" /><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title>SolveGraph</title><link rel=\"stylesheet\" type=\"text/css\" href=\"/static/content/bootstrap.min.css\" /><link rel=\"stylesheet\" type=\"text/css\" href=\"/static/content/site.css\" /><link rel=\"stylesheet\" type=\"text/css\" href=\"/static/content/Stylesheet1.css\" /><link rel=\"icon\" href=\"./static/images/solve_logo.PNG\" class=\"icon-stl\"/><script src=\"/static/scripts/modernizr-2.6.2.js\"></script></head><body><div class=\"navbar navbar-inverse navbar-fixed-top\"><div class=\"container\"><div class=\"navbar-header\"><button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar-collapse\"><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span></button><a href=\"/\"  class=\"navbar-brand\"><img class=\"logo-stl\" src=\"./static/images/solve_logo.PNG\" width=\"40\" height=\"40\"></a></div><div class=\"navbar-collapse collapse\"><ul class=\"nav navbar-nav\"><li><a href=\"/The_Euler_cycle\"><p style=\"padding-top: 10px;\">The Euler cycle</p></a></li>                    <li><a href=\"/Floyd\"><p style=\"padding-top: 10px;\">Floyd</p></a></li><li><a href=\"/Hamilton_method\"><p style=\"padding-top: 10px;\">Hamilton Method</p></a></li><li><a href=\"/Dijkstras_algorithm\"><p style=\"padding-top: 10px;\">Dijkstras algorithm</p></a></li><li><a href=\"/contact\"><p style=\"padding-top: 10px;\">Contacts</p></a></li></ul></div></div></div><div class=\"container body-content\">{{!base}}</div><script src=\"/static/scripts/jquery-1.10.2.js\"></script><script src=\"/static/scripts/bootstrap.js\"></script><script src=\"/static/scripts/respond.js\"></script></body></html>"
+back_to_form = "<head><link rel=\"stylesheet\" type=\"text/css\" href=\"/static/content/Stylesheet1.css\" /><input class=\"btn btn-default\" type=\"button\" onclick=\"history.back();\" value=\"Back\">"
+def printer(res):
+    get = ""
+    for key,value in res.items():
+        get += "<p>"+str("{0}: {1}".format(key,value))+"</p>"
+    return get
+
+def ex(str3):
+    return printer(str3)
+
 @post('/floyd', method='post')
 def func():
     str1= request.forms.get('TEXTFEALD')
@@ -139,15 +156,19 @@ def func():
     draw(G, pos = circular_layout(G), with_labels = True, arrows = True)
     savefig('./static/images/floydgraph.png')
     answer="<p class=\"txt_algn_centr\"><img src=\"./static/images/floydgraph.png\" alt=\"Graph\"></p>"
-    draw_networkx_edge_labels(G, pos, font_size=0)
+    draw_networkx_edge_labels(G, pos)
     fw = floyd_warshall(G, weight='weight')
 
     results = {a:dict(b) for a,b in fw.items()}
     close()
-    return back,(str(results)), answer
+    #res = ""
+    #for i in range(len(results)):
+    #    res += "<p>\{0}</p>".format(results[i+1])
+
+    return back,ex(results), back_to_form, answer
 ##################################################################################################
 @post('/Dijkstra', method='post')
-def func():
+def funcA():
     str1= request.forms.get('atext')
     count = 0
     cnt = 0
@@ -182,35 +203,38 @@ def func():
 def checkGraph():
     str1= request.forms.get('text')
     if (len(str1.strip()) > 0):
+
         if (isMatrix(str1)):
-            answer = "<head><link rel=\"stylesheet\" type=\"text/css\" href=\"/static/content/Stylesheet1.css\" /></head><body><br/><div class=\"brd\" align=\"center\">";
+            answer = "<head><link rel=\"stylesheet\" type=\"text/css\" href=\"/static/content/Stylesheet1.css\" /></head><body><br/><div align=\"center\">";
             inputArr = str_to_arr(str1.strip())
             A = np.array(inputArr)
             path = Hamilton(inputArr, np.empty(len(inputArr),dtype=int))
-            G = DiGraph(A)
-            if (tournament.is_strongly_connected(G)):
-                pos = planar_layout(G)
-                draw(G, pos = circular_layout(G), with_labels = True)
-                savefig('./static/images/hamilton_graph.png')
-                answer+="<p class=\"txt_algn_centr\"><img src=\"./static/images/hamilton_graph.png\" alt=\"Graph\"></p></div></body>"
-                draw_networkx_edge_labels(G, pos)
+            G = function_transformation(str1.strip())
+            result = path.hamiltonianCycle()
 
-            else:
+            answer+="<p class=\"txt_algn_centr\">"+result+"</p>"
                 
-                answer +="</p></div></body>"
+            draw(G, pos = circular_layout(G), with_labels = True)
+            savefig('./static/images/hamilton_graph.png')
+            close()
+            answer+="<p class=\"txt_algn_centr\"><img src=\"./static/images/hamilton_graph.png\" alt=\"Graph\"></p> <input class=\"btn btn-default\" type=\"button\" onclick=\"history.back();\" value=\"Back\"></div></body>" 
             
-            return path.hamiltonianCycle(), answer
-        else: 
+            entryToFile("Hamiltonian cycle", str(inputArr), result)
+            
+            return back, answer
+        else:
             return "Matrix is incorrect"
     else:
         return "Fill in the blank!"
-
+##################################################################################################
 def isMatrix(inputStr):
-    matrixPattern = re.compile(r'^[^A-Za-z2-9/\-><?).,<>|]+$')
+###function to check pattern in input string###
+    matrixPattern = re.compile('^[0-1;]+$')
+    #matrixPattern = re.compile(r'^[^A-Za-z2-9/\-><?).,<>|]+$')
     if matrixPattern.match(inputStr.strip()):
         return True
     else: return False
-    
+##################################################################################################
 def str_to_arr(str1):
     '''function to format user enter'''
     '''DiGraph networkx'''
@@ -224,7 +248,7 @@ def str_to_arr(str1):
         for j in range(len(mas1[i])):
             mas1[i][j] = int(mas[i][j])
     return mas1
-
+##################################################################################################
 class Hamilton:
     """description of class"""
     graph = [[]]
@@ -232,7 +256,6 @@ class Hamilton:
     def __init__(self, graph, path):
         self.graph = graph
         self.path = path
-
 
     def isValid(self, v,k):
         if (self.graph[self.path[k-1]][v]==0):
@@ -242,7 +265,7 @@ class Hamilton:
             if(self.path[i]==v):
                 return False
         return True
-
+    
     def cycleFound(self, k):
         if (k==len(self.graph)):
             if(self.graph[self.path[k-1]][self.path[0]]==1):
@@ -257,21 +280,21 @@ class Hamilton:
                     return True
                 self.path[k] = -1
         return False
-
+    
     def hamiltonianCycle(self):
         for i in range(len(self.graph)):
             self.path[i]=-1
         self.path[0]=0
 
         if (self.cycleFound(1)==False):
-            return "No solution"
+            return "No hamiltonian cycle for that graph!"
         else:
-            res = ""
+            res = "Hamiltonian cycle for the graph is ["
             for i in range(len(self.path)):
-                res+=str(self.path[i]) + " "
-            res += str(self.path[0])
+                res+=str(self.path[i]+1) + " "
+            res += str(self.path[0]+1) + "]"
             return res
-
+##################################################################################################
 def str_to_graph(str1):
     '''function to format user enter'''
     '''DiGraph networkx'''
@@ -292,5 +315,8 @@ def str_to_graph(str1):
             if(mas1[i][j] == 1):
                 G.add_edge(i,j)
     return G
-
-
+##################################################################################################
+def entryToFile(nameMethod,entryUser,result):
+    today = datetime.today()
+    with open('./static/userData/data.txt','a',encoding= sys.stdout.encoding) as outfile:
+        outfile.writelines("Method: " + nameMethod + "\nEntry user: " + entryUser + "\n" +result + "\nDate: " + today.strftime("%Y-%m-%d Time: %H:%M:%S") + "\n\n")
