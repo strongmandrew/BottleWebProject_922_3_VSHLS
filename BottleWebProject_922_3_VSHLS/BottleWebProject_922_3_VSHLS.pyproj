@@ -32,6 +32,8 @@
   <ItemGroup>
     <Compile Include="app.py" />
     <Compile Include="routes.py" />
+    <Compile Include="test_Euler.py" />
+    <Compile Include="test_Euler_two.py" />
     <Compile Include="test_hamiltonian_3.py" />
     <Compile Include="test_hamiltonian_4.py" />
     <Compile Include="test_hamilton_1.py" />
@@ -83,13 +85,9 @@
     </Content>
     <Content Include="views\Floyd.tpl" />
     <Content Include="views\Hamilton_method.tpl" />
-    <Content Include="views\hamilton_result.tpl" />
     <Content Include="views\index.tpl" />
     <Content Include="views\layout.tpl" />
     <Content Include="views\theEulerCycle.tpl" />
-    <Content Include="views\The_Euler_cycle.tpl">
-      <SubType>Code</SubType>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env1\">
