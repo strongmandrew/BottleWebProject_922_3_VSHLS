@@ -297,3 +297,262 @@ Graph is Euler
 Euler cycle: [(1, 3), (3, 3), (3, 2), (2, 2), (2, 3), (3, 1), (1, 2), (2, 1), (1, 1)]
 Date: 2022-05-20 Time: 14:31:09
 
+Method: Euler
+Entry user: 111;111;111
+Graph is Euler
+Euler cycle: [(1, 3), (3, 3), (3, 2), (2, 2), (2, 3), (3, 1), (1, 2), (2, 1), (1, 1)]
+Date: 2022-05-20 Time: 16:43:15
+
+Method: Hamiltonian cycle
+Entry user: [[0, 1, 0], [1, 0, 0], [0, 1, 1]]
+No hamiltonian cycle for that graph!
+Date: 2022-05-20 Time: 16:49:37
+
+Method: Hamiltonian cycle
+Entry user: [[0, 1, 0], [1, 0, 0], [0, 1, 1]]
+No hamiltonian cycle for that graph!
+Date: 2022-05-20 Time: 16:49:45
+
+Method: Hamiltonian cycle
+Entry user: [[0, 1, 1], [1, 0, 0], [0, 1, 1]]
+Hamiltonian cycle for the graph is [1 3 2 1]
+Date: 2022-05-20 Time: 16:49:58
+
+Method: Hamiltonian cycle
+Entry user: [[0, 0, 1], [1, 0, 0], [0, 1, 1]]
+Hamiltonian cycle for the graph is [1 3 2 1]
+Date: 2022-05-20 Time: 16:50:43
+
+Method: Hamiltonian cycle
+Entry user: [[0, 1, 1], [0, 0, 0], [0, 1, 1]]
+No hamiltonian cycle for that graph!
+Date: 2022-05-20 Time: 16:51:05
+
+Method: Euler
+Entry user: 010;100;111
+Graph is not Euler
+Date: 2022-05-20 Time: 16:51:26
+
+Method: Euler
+Entry user: 010;111;111
+Graph is not Euler
+Date: 2022-05-20 Time: 16:51:31
+
+Method: Euler
+Entry user: 111;111;111
+Graph is Euler
+Euler cycle: [(1, 3), (3, 3), (3, 2), (2, 2), (2, 3), (3, 1), (1, 2), (2, 1), (1, 1)]
+Date: 2022-05-20 Time: 16:51:38
+
+Method: Euler
+Entry user: 111;111;111
+Graph is Euler
+Euler cycle: [(1, 3), (3, 3), (3, 2), (2, 2), (2, 3), (3, 1), (1, 2), (2, 1), (1, 1)]
+Date: 2022-05-20 Time: 16:52:20
+
+Method: Hamiltonian cycle
+Entry user: [[1, 1, 1], [0, 1, 0], [1, 0, 0]]
+No hamiltonian cycle for that graph!
+Date: 2022-05-20 Time: 16:55:58
+
+Method: Hamiltonian cycle
+Entry user: [[1, 1, 1], [1, 1, 1], [1, 1, 1]]
+Hamiltonian cycle for the graph is [1 2 3 1]
+Date: 2022-05-20 Time: 16:56:15
+
+Method: Euler
+Entry user: 111;111;111
+Graph is Euler
+Euler cycle: [(1, 3), (3, 3), (3, 2), (2, 2), (2, 3), (3, 1), (1, 2), (2, 1), (1, 1)]
+Date: 2022-05-20 Time: 16:56:44
+
+Method: Euler
+Entry user: 011;001;001
+Graph is not Euler
+Date: 2022-05-20 Time: 16:57:31
+
+Method: Hamiltonian cycle
+Entry user: [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+No hamiltonian cycle for that graph!
+Date: 2022-05-20 Time: 17:04:50
+
+Method: Hamiltonian cycle
+Entry user: [[1, 1, 1], [1, 1, 1], [1, 1, 1]]
+Hamiltonian cycle for the graph is [1 2 3 1]
+Date: 2022-05-20 Time: 17:16:06
+
+Method: Hamiltonian cycle
+Entry user: [[0, 1, 0], [0, 0, 1], [0, 0, 0]]
+No hamiltonian cycle for that graph!
+Date: 2022-05-20 Time: 17:17:08
+
+Method: Hamiltonian cycle
+Entry user: [[0, 1, 0], [0, 0, 1], [1, 0, 0]]
+Hamiltonian cycle for the graph is [1 2 3 1]
+Date: 2022-05-20 Time: 17:17:21
+
+Method: Hamiltonian cycle
+Entry user: [[1, 1, 1], [1, 1, 1], [1, 1, 1]]
+Hamiltonian cycle for the graph is [1 2 3 1]
+Date: 2022-05-20 Time: 17:25:55
+
+Method: Hamiltonian cycle
+Entry user: [[1, 1, 1], [1, 1, 1], [1, 1, 1]]
+Hamiltonian cycle for the graph is [1 2 3 1]
+Date: 2022-05-20 Time: 17:26:01
+
+Method: Hamiltonian cycle
+Entry user: [[1, 1, 1], [1, 1, 1], [1, 1, 1]]
+Hamiltonian cycle for the graph is [1 2 3 1]
+Date: 2022-05-20 Time: 17:26:05
+
+Method: Hamiltonian cycle
+Entry user: [[0, 1, 1], [0, 0, 1], [0, 0, 0]]
+No hamiltonian cycle for that graph!
+Date: 2022-05-20 Time: 17:26:27
+
+Method: Hamiltonian cycle
+Entry user: [[1, 1, 1], [1, 1, 1], [1, 1, 1]]
+Hamiltonian cycle for the graph is [1 2 3 1]
+Date: 2022-05-20 Time: 17:28:00
+
+Method: Hamiltonian cycle
+Entry user: [[0, 1, 1], [0, 0, 1], [0, 0, 0]]
+No hamiltonian cycle for that graph!
+Date: 2022-05-20 Time: 17:28:13
+
+Method: Hamiltonian cycle
+Entry user: [[1, 0, 1], [1, 0, 1], [1, 1, 1]]
+Hamiltonian cycle for the graph is [1 3 2 1]
+Date: 2022-05-20 Time: 18:10:25
+
+Method: Hamiltonian cycle
+Entry user: [[1, 1, 1], [1, 1, 1], [1, 1, 1]]
+Hamiltonian cycle for the graph is [1 2 3 1]
+Date: 2022-05-20 Time: 18:10:32
+
+Method: Hamiltonian cycle
+Entry user: [[1, 1, 1], [1, 1, 1], [1, 1, 1]]
+Hamiltonian cycle for the graph is [1 2 3 1]
+Date: 2022-05-20 Time: 18:11:02
+
+Method: Euler
+Entry user: 111;111
+Graph is Euler
+Euler cycle: [(1, 3), (3, 2), (2, 2), (2, 1), (1, 1)]
+Date: 2022-05-20 Time: 18:21:28
+
+Method: Euler
+Entry user: 111;111;0;0;0;0
+Graph is not Euler
+Date: 2022-05-20 Time: 18:21:54
+
+Method: Euler
+Entry user: 111;0;0;0;
+Graph is not Euler
+Date: 2022-05-20 Time: 18:25:03
+
+Method: Euler
+Entry user: 111;0;0;
+Graph is not Euler
+Date: 2022-05-20 Time: 18:25:37
+
+Method: Euler
+Entry user: 111;0;0;
+Graph is not Euler
+Date: 2022-05-20 Time: 18:25:45
+
+Method: Euler
+Entry user: 111
+Graph is not Euler
+Date: 2022-05-20 Time: 18:26:45
+
+Method: Euler
+Entry user: 111;001
+Graph is Euler
+Euler cycle: [(1, 3), (3, 2), (2, 1)]
+Date: 2022-05-20 Time: 18:26:59
+
+Method: Euler
+Entry user: 111;001;1
+Graph is Euler
+Euler cycle: [(1, 3), (3, 2), (2, 1)]
+Date: 2022-05-20 Time: 18:27:08
+
+Method: Euler
+Entry user: 111;001;1
+Graph is Euler
+Euler cycle: [(1, 3), (3, 2), (2, 1)]
+Date: 2022-05-20 Time: 18:27:13
+
+Method: Euler
+Entry user: 111;001;1
+Graph is Euler
+Euler cycle: [(1, 3), (3, 2), (2, 1)]
+Date: 2022-05-20 Time: 18:27:16
+
+Method: Euler
+Entry user: 111;001;1
+Graph is Euler
+Euler cycle: [(1, 3), (3, 2), (2, 1)]
+Date: 2022-05-20 Time: 18:27:21
+
+Method: Euler
+Entry user: 01;001;1
+Graph is Euler
+Euler cycle: [(1, 3), (3, 2), (2, 1)]
+Date: 2022-05-20 Time: 18:45:55
+
+Method: Euler
+Entry user: 001;1;01
+Graph is Euler
+Euler cycle: [(1, 2), (2, 3), (3, 1)]
+Date: 2022-05-20 Time: 18:46:24
+
+Method: Euler
+Entry user: 1
+Graph is Euler
+Euler cycle: []
+Date: 2022-05-20 Time: 18:46:46
+
+Method: Euler
+Entry user: 11;011;1
+Graph is Euler
+Euler cycle: [(1, 3), (3, 2), (2, 1)]
+Date: 2022-05-20 Time: 18:47:17
+
+Method: Euler
+Entry user: 0
+Graph is Euler
+Euler cycle: []
+Date: 2022-05-20 Time: 18:47:48
+
+Method: Euler
+Entry user: 111;001
+Graph is Euler
+Euler cycle: [(1, 3), (3, 2), (2, 1)]
+Date: 2022-05-20 Time: 18:56:09
+
+Method: Euler
+Entry user: 111;001;111
+Graph is Euler
+Euler cycle: [(1, 3), (3, 2), (2, 1)]
+Date: 2022-05-20 Time: 18:56:14
+
+Method: Euler
+Entry user: 111;111;111
+Graph is Euler
+Euler cycle: [(1, 3), (3, 2), (2, 1)]
+Date: 2022-05-20 Time: 18:57:16
+
+Method: Euler
+Entry user: 01;001;0001;1
+Graph is Euler
+Euler cycle: [(1, 4), (4, 3), (3, 2), (2, 1)]
+Date: 2022-05-20 Time: 18:58:29
+
+Method: Euler
+Entry user: 
+Doesn't match the pattern of matrix
+Date: 2022-05-20 Time: 18:59:17
+

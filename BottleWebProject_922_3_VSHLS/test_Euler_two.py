@@ -5,12 +5,13 @@ class Test_test_Euler_two(unittest.TestCase):
 
     def test_A(self):
         matrix_Euler_graphs_input = ["111;111;111","01;001;1","001;1;01;","1","11;011;1","0", "             1"]
-        matrix_Euler_graphs_output = ["Graph is Euler (1, 3) -> (3, 3) -> (3, 2) -> (2, 2) -> (2, 3) -> (3, 1) -> (1, 2) -> (2, 1) -> (1, 1)",
-                                  "Graph is Euler (1, 2) -> (2, 3) -> (3, 1)", 
+        matrix_Euler_graphs_output = ["Graph is Euler (1, 3) -> (3, 2) -> (2, 1)",
+                                  "Graph is Euler (1, 3) -> (3, 2) -> (2, 1)", 
+                                  "Graph is Euler (1, 2) -> (2, 3) -> (3, 1)",
+                                  "Graph is Euler ",
                                   "Graph is Euler (1, 3) -> (3, 2) -> (2, 1)",
-                                  "Graph is Euler (1, 1)",
-                                  "Graph is Euler (1, 2) -> (2, 2) -> (2, 3) -> (3, 1) -> (1, 1)",
-                                  "Graph is Euler ", "Graph is Euler (1, 1)"]
+                                  "Graph is Euler ",
+                                  "Graph is Euler "]
         for i in range(len(matrix_Euler_graphs_input)):
             self.assertEqual(str(funcEulerCloneForUT(matrix_Euler_graphs_input[i])),matrix_Euler_graphs_output[i]);
 
