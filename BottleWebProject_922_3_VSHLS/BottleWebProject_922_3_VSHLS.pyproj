@@ -32,6 +32,12 @@
   <ItemGroup>
     <Compile Include="app.py" />
     <Compile Include="routes.py" />
+    <Compile Include="test_dijkstra1.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="test_dijkstra2.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="test_hamiltonian_3.py" />
     <Compile Include="test_hamiltonian_4.py" />
     <Compile Include="test_hamilton_1.py" />
