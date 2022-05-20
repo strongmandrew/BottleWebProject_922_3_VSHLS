@@ -18,7 +18,7 @@
     <SuppressCollectPythonCloudServiceFiles>true</SuppressCollectPythonCloudServiceFiles>
     <Name>BottleWebProject_922_3_VSHLS</Name>
     <RootNamespace>BottleWebProject_922_3_VSHLS</RootNamespace>
-    <InterpreterId>MSBuild|env1|$(MSBuildProjectFullPath)</InterpreterId>
+    <InterpreterId>MSBuild|env4|$(MSBuildProjectFullPath)</InterpreterId>
     <TestFramework>unittest</TestFramework>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -86,6 +86,7 @@
     <Content Include="views\hamilton_result.tpl" />
     <Content Include="views\index.tpl" />
     <Content Include="views\layout.tpl" />
+    <Content Include="views\theEulerCycle.tpl" />
     <Content Include="views\The_Euler_cycle.tpl">
       <SubType>Code</SubType>
     </Content>

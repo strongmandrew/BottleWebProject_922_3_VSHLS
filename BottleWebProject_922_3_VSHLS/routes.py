@@ -31,8 +31,8 @@ def contact():
         year=datetime.now().year
     )
 ##################################################################################################
-@route('/The_Euler_cycle')
-@view('The_Euler_cycle')
+@route('/theEulerCycle')
+@view('theEulerCycle')
 def The_Euler_cycle():
     """Renders the about page."""
     return dict(
@@ -130,22 +130,26 @@ def printer(res):
 def ex(str3):
     return printer(str3)
 
+def mastostr(str1):
+    str1 = str1.split(";")
+    mas1 = []
+    for i in range(len(str1)):
+        mas1 += [str1[i].split(",")]
+    return(mas1)
+
 @post('/floyd', method='post')
 def func():
-    str1= request.forms.get('TEXTFEALD')
-    cnt = 0
-    cont = 0
-    str1 = str1.replace(" ", "")
-    mas = str1.split(",")
-    mas1 = []
-    for i in mas:
-        mas1.append(list(i))
-    for i in range(len(mas1)):
-        for j in range(len(mas1[i])):
-            cnt + 0.5
-            cont +1
-            mas1[i][j] = (mas[i][j])
 
+    str1 = request.forms.get('TEXTFEALD')
+    str1 = str1.replace(" ", "")
+    cnt = 0
+    mas1 = mastostr(str1)
+    for i in range(len(mas1)):
+        cnt + 1
+        for j in range(len(mas1[i])):
+            if(j==2):
+                dicts = {'weight':int(mas1[i][j])}
+                mas1[i][j] = dicts
     edges = mas1       
     G = Graph()
     for i in range(1,cnt):
@@ -153,7 +157,7 @@ def func():
     G.add_edges_from(edges)
 
     pos = planar_layout(G)
-    draw(G, pos = circular_layout(G), with_labels = True, arrows = True)
+    draw(G, pos = circular_layout(G), with_labels = True, arrows = False)
     savefig('./static/images/floydgraph.png')
     answer="<p class=\"txt_algn_centr\"><img src=\"./static/images/floydgraph.png\" alt=\"Graph\"></p>"
     draw_networkx_edge_labels(G, pos)
@@ -215,7 +219,7 @@ def checkGraph():
 
             answer+="<p class=\"txt_algn_centr\">"+result+"</p>"
                 
-            draw(G, pos = circular_layout(G), with_labels = True)
+            draw(G, pos = circular_layout(G), with_labels = True, arrows=False)
             savefig('./static/images/hamilton_graph.png')
             close()
             answer+="<p class=\"txt_algn_centr\"><img src=\"./static/images/hamilton_graph.png\" alt=\"Graph\"></p> <input class=\"btn btn-default\" type=\"button\" onclick=\"history.back();\" value=\"Back\"></div></body>" 
