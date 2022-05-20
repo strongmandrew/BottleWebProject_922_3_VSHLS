@@ -1,7 +1,7 @@
 import unittest
 import routes
 
-#unit-тест метода перевода строки в двумерный массив на некорректном наборе данных
+#unittest for transforming a string into two-dimensional array with incorrect data set
 class Test_test_hamilton_2(unittest.TestCase):
     def test_A(self):
         incorrect_matrix = ["01909190,111", "0001--11;", "?1122;100", "-01idjj", "111000012;110011;00", "dj11+;1000",
