@@ -11,8 +11,9 @@
   </p>
   <form action="/Dijkstra" method="post">
   <input class="btn btn-default" margin-bottom="5px" name = "atext" id = "mat" style = "width = 200px height=100px" height="50px"></input>
+  <button class="btn btn-default"> Solve </button>
+  </form>
 <br>
-<button class="btn btn-default"> Solve </button>
 <div class="brd" align="center">
         <h1 align="center">Instruction how to use this method</h1>
         <p>To find a solution, you need to write the graph matrix in a certain format.</p>
