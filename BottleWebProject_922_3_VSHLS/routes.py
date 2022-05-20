@@ -81,15 +81,15 @@ def funcEuler():
             s = str(list(eulerian_circuit(G,source = 1)))
             result = "Graph is Euler"
             answer+="<p class=\"txt_algn_centr\">"+result+"</p><p class=\"txt_algn_centr\">Euler cycle: " + s[1 : -1].replace("),",") ->") +"</p>";
-            draw(G,pos =spring_layout(G), with_labels = True, node_size = 700,arrowsize = 20, font_family = 'Verdana', arrows = True)
-            savefig('./static/images/Euler/graph.png')
-            close()
-            answer+="<p class=\"txt_algn_centr\"><img src=\"./static/images/Euler/graph.png\" alt=\"Graph\"></p>"
             result += "\nEuler cycle: " + s
         else:
             result = "Graph is not Euler"
             answer+="<p class=\"txt_algn_centr\">"+result+"</p>"
-            answer +="</div></body>"
+        draw(G,pos =spring_layout(G), with_labels = True, node_size = 700,arrowsize = 20, font_family = 'Verdana', arrows = False)
+        savefig('./static/images/Euler/graph.png')
+        close()
+        answer+="<p class=\"txt_algn_centr\"><img src=\"./static/images/Euler/graph.png\" alt=\"Graph\"></p>"
+        answer +="</div></body>"
         entryToFile("Euler",str1,result)
         return back,answer
     else:
@@ -109,7 +109,6 @@ def funcEulerCloneForUT(str1):
     else:
         result = "Doesn't match the pattern of matrix"
     return result
-##################################################################################################
 def function_transformation(str1):
     ###function to format user enter###
     ###DiGraph networkx###
@@ -123,13 +122,14 @@ def function_transformation(str1):
     for i in range(len(mas1)):
         for j in range(len(mas1[i])):
             mas1[i][j] = int(mas[i][j])
-    G = DiGraph()
+    G = Graph()
     for i in range(len(mas1)):
         G.add_node(i+1) 
     for i in range(len(mas1)):
         for j in range(len(mas1[i])):
-            if(mas1[i][j] == 1):
-                G.add_edge(i+1,j+1)
+            if(i != j):
+                if(mas1[i][j] == 1):
+                    G.add_edge(i+1,j+1)
     print(G)
     return G
 ##################################################################################################
