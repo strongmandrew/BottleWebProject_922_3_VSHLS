@@ -3,7 +3,9 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8"/>
+	<!-- styles for table -->
 	<style>
+		
 		h1{
 			text-align: center;
 		}

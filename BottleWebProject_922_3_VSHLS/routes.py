@@ -33,7 +33,7 @@ def contact():
 ##################################################################################################
 @route('/theEulerCycle')
 @view('theEulerCycle')
-def theEulerCycle():
+def The_Euler_cycle():
     """Renders the about page."""
     return dict(
         title='The Euler cycle',
@@ -110,9 +110,8 @@ def funcEulerCloneForUT(str1):
         result = "Doesn't match the pattern of matrix"
     return result
 def function_transformation(str1):
-    ###function to format user enter###
-    ###DiGraph networkx###
-    print(str1)
+    '''function to format user enter'''
+    '''DiGraph networkx'''
     mas = str1.replace(" ", "").split(";")
     if (mas[len(mas)-1] == ""):
         mas.pop()
@@ -127,9 +126,8 @@ def function_transformation(str1):
         G.add_node(i+1) 
     for i in range(len(mas1)):
         for j in range(len(mas1[i])):
-            if(i != j):
-                if(mas1[i][j] == 1):
-                    G.add_edge(i+1,j+1)
+            if(mas1[i][j] == 1):
+                G.add_edge(i+1,j+1)
     print(G)
     return G
 ##################################################################################################
@@ -144,22 +142,26 @@ def printer(res):
 def ex(str3):
     return printer(str3)
 
+def mastostr(str1):
+    str1 = str1.split(";")
+    mas1 = []
+    for i in range(len(str1)):
+        mas1 += [str1[i].split(",")]
+    return(mas1)
+
 @post('/floyd', method='post')
 def func():
-    str1= request.forms.get('TEXTFEALD')
-    cnt = 0
-    cont = 0
-    str1 = str1.replace(" ", "")
-    mas = str1.split(",")
-    mas1 = []
-    for i in mas:
-        mas1.append(list(i))
-    for i in range(len(mas1)):
-        for j in range(len(mas1[i])):
-            cnt + 0.5
-            cont +1
-            mas1[i][j] = (mas[i][j])
 
+    str1 = request.forms.get('TEXTFEALD')
+    str1 = str1.replace(" ", "")
+    cnt = 0
+    mas1 = mastostr(str1)
+    for i in range(len(mas1)):
+        cnt + 1
+        for j in range(len(mas1[i])):
+            if(j==2):
+                dicts = {'weight':int(mas1[i][j])}
+                mas1[i][j] = dicts
     edges = mas1       
     G = Graph()
     for i in range(1,cnt):
@@ -167,7 +169,7 @@ def func():
     G.add_edges_from(edges)
 
     pos = planar_layout(G)
-    draw(G, pos = circular_layout(G), with_labels = True, arrows = True)
+    draw(G, pos = circular_layout(G), with_labels = True, arrows = False)
     savefig('./static/images/floydgraph.png')
     answer="<p class=\"txt_algn_centr\"><img src=\"./static/images/floydgraph.png\" alt=\"Graph\"></p>"
     draw_networkx_edge_labels(G, pos)
@@ -181,7 +183,6 @@ def func():
 
     return back,ex(results), back_to_form, answer
 ##################################################################################################
-back = "<!DOCTYPE html><html><head><meta charset=\"utf-8\" /><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title>SolveGraph</title><link rel=\"stylesheet\" type=\"text/css\" href=\"/static/content/bootstrap.min.css\" /><link rel=\"stylesheet\" type=\"text/css\" href=\"/static/content/site.css\" /><link rel=\"stylesheet\" type=\"text/css\" href=\"/static/content/Stylesheet1.css\" /><link rel=\"icon\" href=\"./static/images/solve_logo.PNG\" class=\"icon-stl\"/><script src=\"/static/scripts/modernizr-2.6.2.js\"></script></head><body><div class=\"navbar navbar-inverse navbar-fixed-top\"><div class=\"container\"><div class=\"navbar-header\"><button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar-collapse\"><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span></button><a href=\"/\"  class=\"navbar-brand\"><img class=\"logo-stl\" src=\"./static/images/solve_logo.PNG\" width=\"40\" height=\"40\"></a></div><div class=\"navbar-collapse collapse\"><ul class=\"nav navbar-nav\"><li><a href=\"/The_Euler_cycle\"><p style=\"padding-top: 10px;\">The Euler cycle</p></a></li>                    <li><a href=\"/Floyd\"><p style=\"padding-top: 10px;\">Floyd</p></a></li><li><a href=\"/Hamilton_method\"><p style=\"padding-top: 10px;\">Hamilton Method</p></a></li><li><a href=\"/Dijkstras_algorithm\"><p style=\"padding-top: 10px;\">Dijkstras algorithm</p></a></li><li><a href=\"/contact\"><p style=\"padding-top: 10px;\">Contacts</p></a></li></ul></div></div></div><div class=\"container body-content\">{{!base}}</div><script src=\"/static/scripts/jquery-1.10.2.js\"></script><script src=\"/static/scripts/bootstrap.js\"></script><script src=\"/static/scripts/respond.js\"></script></body></html>"
 back_to_form = "<head><link rel=\"stylesheet\" type=\"text/css\" href=\"/static/content/Stylesheet1.css\" /><input class=\"btn btn-default\" type=\"button\" onclick=\"history.back();\" value=\"Back\">"
 @post('/Dijkstra', method='post')
 def funcA():
@@ -213,7 +214,7 @@ def funcA():
     pto = shortest_path(G, source=None, target=None, weight='weight')
     length = shortest_path_length(G, source=None, target=None, weight='weight')
 
-    return back, "<h1> All shortest paths: " + str(p), '<p>', "Shortest path: " + str(pto), "</p><p> Length of the shortest path: " + str(length), '</p><p>', back_to_form, answer, "</p> </h1>"
+    return back, '<p>' "All shortest paths: " + str(p), '<p>', "Shortest path: " + str(pto), "</p><p> Length of the shortest path: " + str(length), '</p><p>', back_to_form, answer, "</p>"
 ##################################################################################################
 @post('/check', method='post')
 def checkGraph():
@@ -230,7 +231,7 @@ def checkGraph():
 
             answer+="<p class=\"txt_algn_centr\">"+result+"</p>"
                 
-            draw(G, pos = circular_layout(G), with_labels = True)
+            draw(G, pos = circular_layout(G), with_labels = True, arrows=False)
             savefig('./static/images/hamilton_graph.png')
             close()
             answer+="<p class=\"txt_algn_centr\"><img src=\"./static/images/hamilton_graph.png\" alt=\"Graph\"></p> <input class=\"btn btn-default\" type=\"button\" onclick=\"history.back();\" value=\"Back\"></div></body>" 
@@ -246,6 +247,7 @@ def checkGraph():
 def isMatrix(inputStr):
 ###function to check pattern in input string###
     matrixPattern = re.compile('^[0-1;]+$')
+    #matrixPattern = re.compile(r'^[^A-Za-z2-9/\-><?).,<>|]+$')
     if matrixPattern.match(inputStr.strip()):
         return True
     else: return False
@@ -304,6 +306,7 @@ class Hamilton:
                     return True
                 self.path[k] = -1
         return False
+    
     def hamiltonianCycle(self):
         for i in range(len(self.graph)):
             self.path[i]=-1
