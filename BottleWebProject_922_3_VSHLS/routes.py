@@ -73,7 +73,7 @@ def Dijkstras_algorithm():
 def funcEuler():
 ###the method returns a string with Euler cycle if graph is Euler overwise the method returns a string that graph is not Euler###
     str1= request.forms.get('Matrix_dimension').strip()
-    answer = "<head><link rel=\"stylesheet\" type=\"text/css\" href=\"/static/content/Stylesheet1.css\" /></head><body><br/><div class=\"brd\" align=\"center\"> <input class=\"btn btn-default\" type=\"button\" onclick=\"history.back();\" value=\"Back\">";
+    answer = "<head><link rel=\"stylesheet\" type=\"text/css\" href=\"/static/content/Stylesheet1.css\" /></head><body><br/><div class =\"brd-hamiltonian\" align=\"center\"> <input class=\"btn btn-default\" type=\"button\" onclick=\"history.back();\" value=\"Back\">";
     if (isMatrix(str1)):
         G = function_transformation(str1)
         result = ""
@@ -110,8 +110,9 @@ def funcEulerCloneForUT(str1):
         result = "Doesn't match the pattern of matrix"
     return result
 def function_transformation(str1):
-    '''function to format user enter'''
-    '''DiGraph networkx'''
+    ###function to format user enter###
+    ###DiGraph networkx###
+    print(str1)
     mas = str1.replace(" ", "").split(";")
     if (mas[len(mas)-1] == ""):
         mas.pop()
@@ -126,8 +127,9 @@ def function_transformation(str1):
         G.add_node(i+1) 
     for i in range(len(mas1)):
         for j in range(len(mas1[i])):
-            if(mas1[i][j] == 1):
-                G.add_edge(i+1,j+1)
+            if(i != j):
+                if(mas1[i][j] == 1):
+                    G.add_edge(i+1,j+1)
     print(G)
     return G
 ##################################################################################################
