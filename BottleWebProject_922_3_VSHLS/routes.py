@@ -198,7 +198,7 @@ def funcA():
     pto = shortest_path(G, source=None, target=None, weight='weight')
     length = shortest_path_length(G, source=None, target=None, weight='weight')
 
-    return "All shortest paths: " + str(p), '<p>', "Shortest path: " + str(pto), "</p><p> Length of the shortest path: " + str(length), '</p><p>', answer, back_to_form, "</p>"
+    return back, '<p>' "All shortest paths: " + str(p), '<p>', "Shortest path: " + str(pto), "</p><p> Length of the shortest path: " + str(length), '</p><p>', back_to_form, answer, "</p>"
 ##################################################################################################
 @post('/check', method='post')
 def checkGraph():
