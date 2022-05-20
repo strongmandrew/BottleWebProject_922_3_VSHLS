@@ -1,7 +1,7 @@
 import unittest
 import routes
 
-#unit-тест метода перевода строки в двумерный массив на корректном наборе данных
+#unittest for transforming a string into two-dimensional array with correct data set
 class Test_test_strongmandrew_1(unittest.TestCase):
     def test_A(self):
         correct_matrix = ["111;111;111","01;01", "101;100;000", "000;010;111", "11100;00111", "10101;011110;0010;111001"
@@ -15,7 +15,7 @@ class Test_test_strongmandrew_1(unittest.TestCase):
                           "000111;1000;00111", ";101000;111", "0111;10000;100;0100", "1010011", "101011;11111", "0100111;11", 
                           "1000111;10001;001;1111", "0111110;1110;0100111", "010000101;0101;1001", "010000001001;010;111",
                           "001001010;0101001111", "001001111;001111000111", "0010100;0111;100111", "    010111;00101",
-                          "     0110;010011;0010101      ", "1 1 0; 0 01"]
+                          "     0110;010011;0010101      "]
         for matrix in correct_matrix:
             self.assertTrue(routes.isMatrix(matrix))
 

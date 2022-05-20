@@ -2,7 +2,7 @@ import unittest
 import routes
 import numpy as np
 
-#unit-тест метода нахождения Гамильтонова цикла
+#unittest for method finding Hamiltonian cycle with incorrect medium data set 
 class Test_test_hamiltonian_3(unittest.TestCase):
     def test_A(self):
         non_hamiltonian_matrix = ["101;010;100", "101;010;101", "01;01", "010;011;000",

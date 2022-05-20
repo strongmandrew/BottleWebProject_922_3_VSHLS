@@ -2,7 +2,7 @@ import unittest
 import routes
 import numpy as np
 
-#unit-тест метода нахождения Гамильтонова цикла на больших матрицах
+#unittest for method finding Hamiltonian cycle with incorrect large data set 
 class Test_test_hamiltonian_4(unittest.TestCase):
     def test_A(self):
         non_hamiltonian_great_matrix = ["1010101;0010010;0010101;0101010;0101111;0100010;0110111",
