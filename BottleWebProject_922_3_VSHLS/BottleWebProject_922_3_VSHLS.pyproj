@@ -38,6 +38,10 @@
     <Compile Include="test_Euler_two.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="test_hamiltonian_3.py" />
+    <Compile Include="test_hamiltonian_4.py" />
+    <Compile Include="test_hamilton_1.py" />
+    <Compile Include="test_hamilton_2.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="static\" />
