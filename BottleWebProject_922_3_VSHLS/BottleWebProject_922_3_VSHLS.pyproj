@@ -34,6 +34,8 @@
     <Compile Include="routes.py" />
     <Compile Include="test_Euler.py" />
     <Compile Include="test_Euler_two.py" />
+    <Compile Include="test_Floyd_1.py" />
+    <Compile Include="test_floyd_2.py" />
     <Compile Include="test_hamiltonian_3.py" />
     <Compile Include="test_hamiltonian_4.py" />
     <Compile Include="test_hamilton_1.py" />
