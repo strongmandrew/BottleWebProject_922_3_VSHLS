@@ -18,7 +18,7 @@
     <SuppressCollectPythonCloudServiceFiles>true</SuppressCollectPythonCloudServiceFiles>
     <Name>BottleWebProject_922_3_VSHLS</Name>
     <RootNamespace>BottleWebProject_922_3_VSHLS</RootNamespace>
-    <InterpreterId>MSBuild|env1|$(MSBuildProjectFullPath)</InterpreterId>
+    <InterpreterId>MSBuild|env_python3_9|$(MSBuildProjectFullPath)</InterpreterId>
     <TestFramework>unittest</TestFramework>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -32,12 +32,10 @@
   <ItemGroup>
     <Compile Include="app.py" />
     <Compile Include="routes.py" />
-    <Compile Include="test_dijkstra1.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="test_dijkstra2.py">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="test_Euler.py" />
+    <Compile Include="test_Euler_two.py" />
+    <Compile Include="test_Floyd_1.py" />
+    <Compile Include="test_floyd_2.py" />
     <Compile Include="test_hamiltonian_3.py" />
     <Compile Include="test_hamiltonian_4.py" />
     <Compile Include="test_hamilton_1.py" />
@@ -89,12 +87,9 @@
     </Content>
     <Content Include="views\Floyd.tpl" />
     <Content Include="views\Hamilton_method.tpl" />
-    <Content Include="views\hamilton_result.tpl" />
     <Content Include="views\index.tpl" />
     <Content Include="views\layout.tpl" />
-    <Content Include="views\The_Euler_cycle.tpl">
-      <SubType>Code</SubType>
-    </Content>
+    <Content Include="views\theEulerCycle.tpl" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env1\">

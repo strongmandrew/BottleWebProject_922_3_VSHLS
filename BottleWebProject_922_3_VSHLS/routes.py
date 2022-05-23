@@ -135,26 +135,27 @@ def function_transformation(str1):
 ##################################################################################################
 back = "<!DOCTYPE html><html><head><meta charset=\"utf-8\" /><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title>SolveGraph</title><link rel=\"stylesheet\" type=\"text/css\" href=\"/static/content/bootstrap.min.css\" /><link rel=\"stylesheet\" type=\"text/css\" href=\"/static/content/site.css\" /><link rel=\"stylesheet\" type=\"text/css\" href=\"/static/content/Stylesheet1.css\" /><link rel=\"icon\" href=\"./static/images/solve_logo.PNG\" class=\"icon-stl\"/><script src=\"/static/scripts/modernizr-2.6.2.js\"></script></head><body><div class=\"navbar navbar-inverse navbar-fixed-top\"><div class=\"container\"><div class=\"navbar-header\"><button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar-collapse\"><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span></button><a href=\"/\"  class=\"navbar-brand\"><img class=\"logo-stl\" src=\"./static/images/solve_logo.PNG\" width=\"40\" height=\"40\"></a></div><div class=\"navbar-collapse collapse\"><ul class=\"nav navbar-nav\"><li><a href=\"/The_Euler_cycle\"><p style=\"padding-top: 10px;\">The Euler cycle</p></a></li>                    <li><a href=\"/Floyd\"><p style=\"padding-top: 10px;\">Floyd</p></a></li><li><a href=\"/Hamilton_method\"><p style=\"padding-top: 10px;\">Hamilton Method</p></a></li><li><a href=\"/Dijkstras_algorithm\"><p style=\"padding-top: 10px;\">Dijkstras algorithm</p></a></li><li><a href=\"/contact\"><p style=\"padding-top: 10px;\">Contacts</p></a></li></ul></div></div></div><div class=\"container body-content\">{{!base}}</div><script src=\"/static/scripts/jquery-1.10.2.js\"></script><script src=\"/static/scripts/bootstrap.js\"></script><script src=\"/static/scripts/respond.js\"></script></body></html>"
 back_to_form = "<head><link rel=\"stylesheet\" type=\"text/css\" href=\"/static/content/Stylesheet1.css\" /><input class=\"btn btn-default\" type=\"button\" onclick=\"history.back();\" value=\"Back\">"
+##################################################################################################
 def printer(res):
     get = ""
     for key,value in res.items():
         get += "<p>"+str("{0}: {1}".format(key,value))+"</p>"
     return get
-
+##################################################################################################
 def ex(str3):
     return printer(str3)
-
+##################################################################################################
 def mastostr(str1):
     str1 = str1.split(";")
     mas1 = []
     for i in range(len(str1)):
         mas1 += [str1[i].split(",")]
     return(mas1)
-
+##################################################################################################
 @post('/floyd', method='post')
 def func():
-
-    str1 = request.forms.get('TEXTFEALD')
+    answer = "<head><link rel=\"stylesheet\" type=\"text/css\" href=\"/static/content/Stylesheet1.css\" /></head><body><br/><div class=\"brd-hamiltonian\" align=\"center\">";
+    str1= request.forms.get('TEXTFEALD')
     str1 = str1.replace(" ", "")
     cnt = 0
     mas1 = mastostr(str1)
@@ -164,6 +165,7 @@ def func():
             if(j==2):
                 dicts = {'weight':int(mas1[i][j])}
                 mas1[i][j] = dicts
+
     edges = mas1       
     G = Graph()
     for i in range(1,cnt):
@@ -173,17 +175,15 @@ def func():
     pos = planar_layout(G)
     draw(G, pos = circular_layout(G), with_labels = True, arrows = False)
     savefig('./static/images/floydgraph.png')
-    answer="<p class=\"txt_algn_centr\"><img src=\"./static/images/floydgraph.png\" alt=\"Graph\"></p>"
+    
     draw_networkx_edge_labels(G, pos)
     fw = floyd_warshall(G, weight='weight')
 
     results = {a:dict(b) for a,b in fw.items()}
     close()
-    #res = ""
-    #for i in range(len(results)):
-    #    res += "<p>\{0}</p>".format(results[i+1])
-
-    return back,ex(results), back_to_form, answer
+    answer+="<p class=\"txt_algn_centr\">"+ex(results)+"</p>"
+    answer+="<p class=\"txt_algn_centr\"><img src=\"./static/images/floydgraph.png\" alt=\"Graph\"></p> <input class=\"btn btn-default\" type=\"button\" onclick=\"history.back();\" value=\"Back\"></div></body>" 
+    return back, answer
 ##################################################################################################
 back_to_form = "<head><link rel=\"stylesheet\" type=\"text/css\" href=\"/static/content/Stylesheet1.css\" /><input class=\"btn btn-default\" type=\"button\" onclick=\"history.back();\" value=\"Back\">"
 @post('/Dijkstra', method='post')
