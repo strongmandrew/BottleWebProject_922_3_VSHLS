@@ -189,18 +189,20 @@ back_to_form = "<head><link rel=\"stylesheet\" type=\"text/css\" href=\"/static/
 @post('/Dijkstra', method='post')
 def funcA():
     str1= request.forms.get('atext')
-    count = 0
     cnt = 0
     str1 = str1.replace(" ", "")
     mas = str1.split(",")
+    #mast = [1,2,3]
+    #mas = str1.split(":")
     mas1 = []
+    masves=[]
     for i in mas:
-        mas1.append(list(i))
+        mas1.append(i)
+    for i in mas:
+        masves.append(i)
     for i in range(len(mas1)):
-        for j in range(len(mas1[i])):
-            count + 1
-            cnt + 1
-            mas1[i][j] = (mas[i][j])
+        cnt + 1
+        masves[i]=mas1[mas1[i].find(':'):]
       
     edges = mas1
     G = Graph()
@@ -209,12 +211,12 @@ def funcA():
     G.add_edges_from(edges)
 
     pos = planar_layout(G)
-    p = shortest_path(G, source=None, weight='weight')
+    p = shortest_path(G, source=None, weight=None, method='dijkstra')
     draw(G, pos = circular_layout(G), with_labels = True)
     savefig('./static/images/dijkstragraph.png')
     answer="<p class=\"txt_algn_centr\"><img src=\"./static/images/dijkstragraph.png\" alt=\"Graph\"></p>"
-    pto = shortest_path(G, source=None, target=None, weight='weight')
-    length = shortest_path_length(G, source=None, target=None, weight='weight')
+    pto = shortest_path(G, source=None, target=None, weight=None, method='dijkstra')
+    length = shortest_path_length(G, source=None, target=None, weight=None, method='dijkstra')
 
     return back, '<p>' "All shortest paths: " + str(p), '<p>', "Shortest path: " + str(pto), "</p><p> Length of the shortest path: " + str(length), '</p><p>', back_to_form, answer, "</p>"
 ##################################################################################################
